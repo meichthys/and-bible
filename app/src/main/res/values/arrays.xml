@@ -101,6 +101,7 @@
 		<item>@string/lang_french</item>
 		<item>@string/lang_hebrew</item>
 		<item>@string/lang_hindi</item>
+        <item>@string/lang_croatian</item>
 		<item>@string/lang_hungarian</item>
 		<item>@string/lang_indonesian</item>
 		<item>@string/lang_italian</item>
@@ -144,7 +145,8 @@
 		<item>fi</item>
 		<item>fr</item>
 		<item>iw</item>
-		<item>hi</item>
+        <item>hi</item>
+		<item>hr</item>
 		<item>hu</item>
 		<item>in</item>
 		<item>it</item>
