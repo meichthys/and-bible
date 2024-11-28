@@ -1663,7 +1663,10 @@ object CommonUtils : CommonUtilsBase() {
         val v11n = if (v11nStr == null) defV11n else Versifications.instance().getVersification(v11nStr) ?: defV11n
 
         val match = urlRegex.find(uri.path.toString()) ?: return null
-        val keyStr = match.groups[1]?.value ?: return null
+        var keyStr = match.groups[1]?.value ?: return null
+        if (keyStr.contains(":")) {
+            keyStr = keyStr.split(":", limit = 2)[1]
+        }
 
         val key: Passage = PassageKeyFactory.instance().getKey(v11n, keyStr)
 
