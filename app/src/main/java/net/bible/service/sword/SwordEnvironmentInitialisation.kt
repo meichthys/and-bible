@@ -111,19 +111,17 @@ object SwordEnvironmentInitialisation {
             }
 
             private fun showMsg(ev: ReporterEvent?) {
-                val msg: String?
-                msg = if (ev == null) {
+                val msg = if (ev == null) {
                     getResourceString(R.string.error_occurred)
                 } else if (!StringUtils.isEmpty(ev.message)) {
                     ev.message
-                } else if (ev.exception != null && StringUtils.isEmpty(ev.exception.message)) {
-                    ev.exception.message
+                } else if (ev.exception != null && !StringUtils.isEmpty(ev.exception.message)) {
+                    getResourceString(R.string.error_occurred_with_link, ev.exception.message!!)
                 } else {
                     getResourceString(R.string.error_occurred)
                 }
                 // convert Throwable to Exception for Dialogs
-                val e: Exception
-                e = if (ev != null) {
+                val e: Exception = if (ev != null) {
                     val th = ev.exception
                     if (th is Exception) th else Exception("Jsword Exception", th)
                 } else {
