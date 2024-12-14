@@ -7,7 +7,7 @@ noteText: Fusnote (%s)
 noteTextWithoutType: Fusnote
 crossReferenceText: Unakrsne reference
 findAllOccurrences: Pronađi sva pojavljivanja
-reportError: Prijavi grešku
+reportError: Prijavite grešku
 errorTitle: Dogodila se greška
 warningTitle: Upozorenje
 normalTitle: Molimo Vas obratite pažnju
@@ -17,21 +17,21 @@ footnoteTypeVariant: Inačica
 footnoteTypeAlternative: Alternativa
 footnoteTypeTranslation: Prijevod
 clearLog: Očisti zapisnik pogrešaka
-editTextPlaceholder: Dodirni za uređivanje teksta
+editTextPlaceholder: Dodirnite za uređivanje teksta
 inputPlaceholder: Napišite ovdje
 inputReference: Unesite biblijsku referencu
 invalidReference: Redak nije pronađen
 bookmarkAccurate: Straničnik je napravljen u %s
 bookmarkInaccurate: "Straničnik detalja o knjizi nije pohranjen, sadržaj je prikazan u %s."
 defaultBook: Zadani biblijski dokument
-ok: OK
+ok: U redu
 yes: "Da"
 ambiguousSelection: "Koju radnju želite poduzeti?"
-cancel: Otkaži
+cancel: Odustani
 removeBookmarkConfirmationTitle: "Ukloni straničnik?"
 removeBookmarkConfirmation: "Jeste li sigurni da želite ukloniti ovaj straničnik?"
 createdAt: "Napravljeno: %s"
-lastUpdatedOn: "Poslednji put ažurirano: %s"
+lastUpdatedOn: "Posljednji put ažurirano: %s"
 strongsAndMorph: Definicija i morfologija
 externalLink: Otvori vanjsku poveznicu
 referenceLink: Otvori poveznicu za referencu

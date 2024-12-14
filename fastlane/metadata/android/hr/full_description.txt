@@ -1,6 +1,6 @@
 <b>Moćno sredstvo za učenje Svetoga pisma</b>
 
-"AndBible: Učenje Biblije" je moćna, ali ipak lagana za korištenje, izvanmežno Android aplikacija za učenje Svetoga pisma. Aplikacija nije napravljenja samo za čitanje Svetoga pisma, već kao i napredno sredstvo za detaljno osobno proučavanje Svetoga pisma."
+"AndBible: Biblija Studij" je moćna, ali ipak lagana za korištenje, izvanmežna Android aplikacija za učenje Svetoga pisma. Aplikacija nije napravljenja samo za čitanje Svetoga pisma, već kao i napredno sredstvo za detaljno osobno proučavanje Svetoga pisma."
 
 Ova aplikacija je napravljena od strane čitatelja Svetoga pisma za čitatelje Svetoga pisma. Ima za cilj da Vam učenje Svetoga pisma bude ugodno, detaljno i zanimljivo. Najbolji dio o ovom neprofitnom projektu jeste što je aplikacija otvorenog koda, sasvim besplatna i bez oglasa.
 
@@ -8,12 +8,12 @@ Nekoliko najpoznatijih prijevoda Biblije (od mnogih dostupnih) su KJV, NASB, NET
 
 <b>Moćne funkcije za proučavanje Biblije</b>
 
-Aplikacija ima mnoge originalne funkcije koje čine detaljno proučavanje Biblije lakšim nego ikad. Značajne fukncije su sljedeće:
+Aplikacija ima mnoge originalne funkcije koje čine detaljno proučavanje Biblije lakšim nego ikad. Značajne funkcije su sljedeće:
 
  * Dijeljenje pregleda teksta koje omogućava uspoređivanje prijevoda i pretraživanje u tumačenjima
  * Radne površine omogućavaju više postavki za proučavanje Biblije sa odvojenim podešavanjima
- * Integracija Strongovog rječnika omogućava analizu grčkih i hebrejskih reči
- * Povezane unakrsne reference, fusnote i dokumenta: prebacite se na unakrsne reference i fusnote jednostavnim dodirom na poveznicu; izvršite detaljnu analizu Svetih spisa korištenjem hiperveze tumačenja (Gill, Matthew Henry itd.), kolekcije unakrsnih referenci (Treasure of Scripture Knowledge, TSKe) i drugih izvora.
+ * Integracija Strongovog rječnika omogućava analizu grčkih i hebrejskih riječi
+ * Povezane unakrsne reference, fusnote i dokumenti: prebacite se na unakrsne reference i fusnote jednostavnim dodirom na poveznicu; izvršite detaljnu analizu Svetih spisa korištenjem hiperveze tumačenja (Gill, Matthew Henry itd.), kolekcije unakrsnih referenci (Treasure of Scripture Knowledge, TSKe) i drugih izvora.
  * Napredni tekst - u - govor sa izgovorom straničnika, koje omogućava glatki doživljaj slušanja Svetoga pisma
  * Prilagodljivo pretraživanje
  * Napredno straničnikanje i isticanja značajki sa osobnim bilješkama za učenje
@@ -24,7 +24,7 @@ Aplikacija ima mnoge originalne funkcije koje čine detaljno proučavanje Biblij
 
 <b>Hajde da zajedno napravimo najbolju biblijsku aplikaciju!</b>
 
-AndBible je projekt zajednice otvorenog koda. U praksi, ovo znači da svatko ko ima određeni niz vještina može, uz ohrabrenje, da doprinese projektu:
+AndBible je projekt zajednice otvorenog koda. U praksi, ovo znači da svatko tko ima određeni niz vještina može, uz ohrabrenje, da doprinese projektu:
 
  * razvijanjem novih funkcija,
  * testiranjem još uvijek neobjavljenih funkcija
