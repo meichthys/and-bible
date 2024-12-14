@@ -19,6 +19,7 @@ package net.bible.service.sword
 import android.Manifest
 import android.content.pm.PackageManager
 import android.util.Log
+import android.util.LruCache
 import androidx.core.content.ContextCompat
 import net.bible.android.BibleApplication.Companion.application
 import net.bible.android.SharedConstants
@@ -43,6 +44,7 @@ import org.crosswire.jsword.passage.PassageKeyFactory
 import org.crosswire.jsword.passage.PassageType
 import java.io.File
 
+private const val FIVE_MINUTES_MS: Long = 1000 * 60 * 5
 /**
  * Create directories required by JSword and set required JSword configuration.
  *
@@ -110,6 +112,8 @@ object SwordEnvironmentInitialisation {
                 showMsg(ev)
             }
 
+            val messageCache = LruCache<String, Long>(100);
+
             private fun showMsg(ev: ReporterEvent?) {
                 val msg = when {
                     ev == null -> getResourceString(R.string.error_occurred)
@@ -117,6 +121,11 @@ object SwordEnvironmentInitialisation {
                     ev.exception != null && !StringUtils.isEmpty(ev.exception.message) ->
                         getResourceString(R.string.error_occurred_with_link, ev.exception.message!!)
                     else -> getResourceString(R.string.error_occurred)
+                }
+                val lastShown = messageCache.get(msg)
+                messageCache.put(msg, System.currentTimeMillis())
+                if (lastShown != null && System.currentTimeMillis() - lastShown < FIVE_MINUTES_MS) {
+                    return // Error message has been shown recently, let's not spam user!
                 }
                 // convert Throwable to Exception for Dialogs
                 val e: Exception = if (ev != null) {
