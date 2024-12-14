@@ -99,6 +99,8 @@ object SwordEnvironmentInitialisation {
         SwordBookPath.setAugmentPath(arrayOf(SharedConstants.manualInstallDir, SharedConstants.manualInstallDir2))
     }
 
+    private val messageShownLast = LruCache<String, Long>(100);
+
     /** JSword calls back to this listener in the event of some types of error
      *
      */
@@ -112,7 +114,6 @@ object SwordEnvironmentInitialisation {
                 showMsg(ev)
             }
 
-            val messageCache = LruCache<String, Long>(100);
 
             private fun showMsg(ev: ReporterEvent?) {
                 val msg = when {
@@ -122,8 +123,8 @@ object SwordEnvironmentInitialisation {
                         getResourceString(R.string.error_occurred_with_link, ev.exception.message!!)
                     else -> getResourceString(R.string.error_occurred)
                 }
-                val lastShown = messageCache.get(msg)
-                messageCache.put(msg, System.currentTimeMillis())
+                val lastShown = messageShownLast.get(msg)
+                messageShownLast.put(msg, System.currentTimeMillis())
                 if (lastShown != null && System.currentTimeMillis() - lastShown < FIVE_MINUTES_MS) {
                     return // Error message has been shown recently, let's not spam user!
                 }
