@@ -1251,8 +1251,11 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
 
                 val toolbarColor = if (ScreenSettings.nightMode)
                     resources.getColor(R.color.actionbar_background_night, theme)
-                else
+                else if (monochromeMode) {
+                    Color.BLACK
+                } else {
                     workspaceSettings.workspaceColor ?: defaultWorkspaceColor
+                }
 
                 binding.run {
                     homeButton.setBackgroundColor(toolbarColor)
