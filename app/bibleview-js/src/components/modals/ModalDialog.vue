@@ -19,7 +19,11 @@
   <teleport to="#modals">
     <div v-if="blocking" @click.stop="$emit('close')" class="modal-backdrop"/>
     <div :class="{blocking}">
-      <div ref="modal" @click.stop class="modal-content" :class="{blocking, wide, edit, limit}"
+      <div
+          ref="modal"
+          @click.stop
+          class="modal-content"
+          :class="{blocking, wide, edit, limit, doNotAnimate}"
       >
         <div ref="header" class="modal-header">
           <slot name="title-div">
@@ -49,7 +53,7 @@
   </teleport>
 </template>
 <script setup lang="ts">
-import {inject, nextTick, onMounted, onUnmounted, ref, shallowRef, watch} from "vue";
+import {computed, inject, nextTick, onMounted, onUnmounted, ref, shallowRef, watch} from "vue";
 import {useCommon} from "@/composables";
 import {draggableElement, setupDocumentEventListener, setupWindowEventListener,} from "@/utils";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
@@ -76,6 +80,7 @@ const props = withDefaults(
 const modal = shallowRef<HTMLElement | null>(null);
 const header = ref(null);
 const ready = ref(false);
+const doNotAnimate = computed(() => appSettings.monochromeMode);
 
 async function resetPosition(horizontal = false) {
     const m = modal.value!;
@@ -168,6 +173,9 @@ $border-radius2: $border-radius - 1.5pt;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   animation-name: animatetop;
   animation-duration: 0.2s;
+  &.doNotAnimate {
+    animation: none;
+  }
 
   .night & {
     background-color: $modal-content-background-color-night;

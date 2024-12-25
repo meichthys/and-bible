@@ -140,6 +140,9 @@ export function useScroll(
             osisRef?: string
         }> = {}) {
         console.log("scrollToId", {toId, now, highlight, force, duration, ordinalStart, ordinalEnd});
+        if (appSettings.monochromeMode) {
+            now = true;
+        }
         stopScrolling();
         let delta = calculatedConfig.value.topOffset;
         if (highlight && ordinalStart) {
