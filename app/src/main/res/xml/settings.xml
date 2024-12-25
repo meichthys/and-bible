@@ -189,6 +189,12 @@
 			android:defaultValue="false"
 			android:icon="@drawable/ic_bug_report_white_24dp"
 			/>
+        <SwitchPreferenceCompat android:key="monochrome_mode"
+            android:title="@string/monochrome_title"
+            android:summary="@string/prefs_monochrome_summary"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_color_settings_24dp"
+            />
 		<Preference android:key="open_links"
 			android:title="@string/open_bible_links_title"
 			android:summary="@string/open_bible_links_summary"

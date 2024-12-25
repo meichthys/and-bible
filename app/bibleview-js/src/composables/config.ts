@@ -26,8 +26,8 @@ export type StrongsMode = 0 | 1 | 2 | 3
 export const strongsModes: Record<string, StrongsMode> = {off: 0, inline: 1, links: 2, hidden: 3}
 
 export let errorBox = false;
-const white = -1;
-const black = -16777216;
+export const white = -1;
+export const black = -16777216;
 
 let developmentMode: boolean = false;
 export let testMode: boolean = false;
@@ -108,6 +108,7 @@ export type AppSettings = {
     windowId: IdType,
     bibleModalButtons: BibleModalButtonId[],
     genericModalButtons: GenericModalButtonId[],
+    monochromeMode: boolean,
 }
 
 export type CalculatedConfig = Ref<{
@@ -184,6 +185,7 @@ export function useConfig(documentType: Ref<BibleViewDocumentType>) {
         windowId: "",
         bibleModalButtons: ["BOOKMARK", "BOOKMARK_NOTES", "MY_NOTES", "COMPARE", "SHARE"],
         genericModalButtons: ["BOOKMARK", "BOOKMARK_NOTES", "SPEAK"],
+        monochromeMode: false,
     });
 
     function calcMmInPx() {

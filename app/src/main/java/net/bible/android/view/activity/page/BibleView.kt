@@ -162,6 +162,9 @@ class AppSettingsUpdated
 const val MAX_DOC_STR_LENGTH = 4000000;
 private val notFound = WebResourceResponse(null, null, null)
 
+const val white = -1
+const val black = -16777216
+
 @Serializable
 class Selection(
     val bookInitials: String?,
@@ -1186,7 +1189,10 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
 
     val backgroundColor: Int get() {
         val colors = window.pageManager.actualTextDisplaySettings.colors
-        return (if(ScreenSettings.nightMode) colors?.nightBackground else colors?.dayBackground) ?: UiUtils.bibleViewDefaultBackgroundColor
+        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
+        val nightBackground = if(monochromeMode) black else colors?.nightBackground
+        val dayBackground = if(monochromeMode) white else colors?.dayBackground
+        return (if(ScreenSettings.nightMode) nightBackground else dayBackground) ?: UiUtils.bibleViewDefaultBackgroundColor
     }
 
     var lastUpdated = 0L
@@ -1309,6 +1315,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
         val genericModalButtons = json.encodeToString(serializer(),
             CommonUtils.settings.getStringSet("gen_bookmark_modal_buttons", setOf("BOOKMARK", "BOOKMARK_NOTES", "SPEAK"))
         )
+        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
         return """
                 bibleView.emit('set_config', {
                     config: ${displaySettings.toJson()}, 
@@ -1324,6 +1331,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
                         windowId: '${window.displayId}',
                         bibleModalButtons: $bibleModalButtons, 
                         genericModalButtons: $genericModalButtons, 
+                        monochromeMode: $monochromeMode,
                     }, 
                     initial: $initial,
                     });

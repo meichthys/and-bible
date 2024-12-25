@@ -78,7 +78,7 @@ import {useKeyboard} from "@/composables/keyboard";
 import {useVerseNotifier} from "@/composables/verse-notifier";
 import {useAddonFonts} from "@/composables/addon-fonts";
 import {useFontAwesome} from "@/composables/fontawesome";
-import {useConfig} from "@/composables/config";
+import {black, useConfig, white} from "@/composables/config";
 import {useOrdinalHighlight} from "@/composables/ordinal-highlight";
 import {useModal} from "@/composables/modal";
 import {useCustomCss} from "@/composables/custom-css";
@@ -229,7 +229,9 @@ provide(androidKey, android);
 const ambiguousSelection = ref<InstanceType<typeof AmbiguousSelection> | null>(null);
 
 const backgroundStyle = computed(() => {
-    const colorInt = appSettings.nightMode ? config.colors.nightBackground : config.colors.dayBackground;
+    const nightColor = appSettings.monochromeMode ? black : config.colors.nightBackground;
+    const dayColor = appSettings.monochromeMode? white : config.colors.dayBackground;
+    const colorInt = appSettings.nightMode ? nightColor : dayColor;
     if (colorInt === null) return "";
     const backgroundColor = Color(colorInt).hsl().string();
     return `
@@ -238,7 +240,9 @@ const backgroundStyle = computed(() => {
 });
 
 const contentStyle = computed(() => {
-    const textColor = Color(appSettings.nightMode ? config.colors.nightTextColor : config.colors.dayTextColor);
+    const nightColor = appSettings.monochromeMode? white: config.colors.nightTextColor;
+    const dayColor = appSettings.monochromeMode ? black: config.colors.dayTextColor;
+    const textColor = Color(appSettings.nightMode ? nightColor : dayColor);
 
     let style = `
           max-width: ${config.marginSize.maxWidth}mm;
@@ -271,9 +275,15 @@ const modalStyle = computed(() => {
 });
 
 const topStyle = computed(() => {
-    const backgroundColor = Color(appSettings.nightMode ? config.colors.nightBackground : config.colors.dayBackground);
+    const nightTextColor = appSettings.monochromeMode? white: config.colors.nightTextColor;
+    const dayTextColor = appSettings.monochromeMode ? black: config.colors.dayTextColor;
+
+    const nightBackgroundColor = appSettings.monochromeMode ? black : config.colors.nightBackground;
+    const dayBackgroundColor = appSettings.monochromeMode? white : config.colors.dayBackground;
+
+    const backgroundColor = Color(appSettings.nightMode ? nightBackgroundColor : dayBackgroundColor);
     const noiseOpacity = appSettings.nightMode ? config.colors.nightNoise : config.colors.dayNoise;
-    const textColor = Color(appSettings.nightMode ? config.colors.nightTextColor : config.colors.dayTextColor);
+    const textColor = Color(appSettings.nightMode ? nightTextColor : dayTextColor);
     const verseNumberColor = appSettings.nightMode ?
         textColor.fade(0.2).hsl().string() :
         textColor.fade(0.5).hsl().string();
