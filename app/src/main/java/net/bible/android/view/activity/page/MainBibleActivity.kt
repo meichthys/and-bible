@@ -24,6 +24,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.graphics.Color
 import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
@@ -337,6 +338,12 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
         }
 
         var currentSliderOffset = 0.0F
+
+        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
+
+        if (monochromeMode) {
+            binding.drawerLayout.setScrimColor(Color.TRANSPARENT)
+        }
 
         binding.drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {
