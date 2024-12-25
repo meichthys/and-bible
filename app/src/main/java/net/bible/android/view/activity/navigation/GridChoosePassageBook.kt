@@ -26,6 +26,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.google.android.gms.common.internal.service.Common
 
 import net.bible.android.activity.R
 import net.bible.android.control.navigation.BibleBookSortOrder

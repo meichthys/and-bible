@@ -1233,6 +1233,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
     }
 
     private fun showSystemUI(setNavBarColor: Boolean=true) {
+        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
         var uiFlags = View.SYSTEM_UI_FLAG_VISIBLE
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (!ScreenSettings.nightMode) {
@@ -1258,7 +1259,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                     binding.homeButton.drawable.setTint(workspaceSettings.workspaceColor ?: defaultWorkspaceColor)
                 }
 
-                val color = if (setNavBarColor) {
+                val color = if (setNavBarColor && !monochromeMode) {
                     val color = if (ScreenSettings.nightMode) colors.nightBackground else colors.dayBackground
                     color ?: UiUtils.bibleViewDefaultBackgroundColor
                 } else {
