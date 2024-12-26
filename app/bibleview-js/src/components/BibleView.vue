@@ -267,8 +267,8 @@ const contentStyle = computed(() => {
           `;
     if (config.marginSize.marginLeft || config.marginSize.marginRight) {
         style += `
-            margin-left: ${config.marginSize.marginLeft}mm;
-            margin-right: ${config.marginSize.marginRight}mm;
+            padding-left: ${config.marginSize.marginLeft}mm;
+            padding-right: ${config.marginSize.marginRight}mm;
           `;
     }
     return style;
