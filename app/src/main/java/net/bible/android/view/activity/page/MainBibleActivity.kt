@@ -339,7 +339,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
 
         var currentSliderOffset = 0.0F
 
-        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
+        val monochromeMode = CommonUtils.settings.monochromeMode
 
         if (monochromeMode) {
             binding.drawerLayout.setScrimColor(Color.TRANSPARENT)
@@ -1240,7 +1240,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
     }
 
     private fun showSystemUI(setNavBarColor: Boolean=true) {
-        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
+        val monochromeMode = CommonUtils.settings.monochromeMode
         var uiFlags = View.SYSTEM_UI_FLAG_VISIBLE
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (!ScreenSettings.nightMode) {

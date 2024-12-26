@@ -88,7 +88,7 @@ class ButtonGrid constructor(context: Context, attrs: AttributeSet? = null, defS
     var isCurrentlyShowingScripture = false
     var isShowLongBookName = false
 
-    val monochrome = CommonUtils.settings.getBoolean("monochrome_mode", false)
+    val monochrome = CommonUtils.settings.monochromeMode
 
     fun clear() {
         removeAllViews()

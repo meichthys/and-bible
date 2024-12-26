@@ -1189,7 +1189,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
 
     val backgroundColor: Int get() {
         val colors = window.pageManager.actualTextDisplaySettings.colors
-        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
+        val monochromeMode = CommonUtils.settings.monochromeMode
         val nightBackground = if(monochromeMode) black else colors?.nightBackground
         val dayBackground = if(monochromeMode) white else colors?.dayBackground
         return (if(ScreenSettings.nightMode) nightBackground else dayBackground) ?: UiUtils.bibleViewDefaultBackgroundColor
@@ -1315,7 +1315,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
         val genericModalButtons = json.encodeToString(serializer(),
             CommonUtils.settings.getStringSet("gen_bookmark_modal_buttons", setOf("BOOKMARK", "BOOKMARK_NOTES", "SPEAK"))
         )
-        val monochromeMode = CommonUtils.settings.getBoolean("monochrome_mode", false)
+        val monochromeMode = CommonUtils.settings.monochromeMode
         return """
                 bibleView.emit('set_config', {
                     config: ${displaySettings.toJson()}, 

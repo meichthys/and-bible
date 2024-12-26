@@ -428,6 +428,8 @@ object CommonUtils : CommonUtilsBase() {
         fun removeDouble(key: String) = setDouble(key, null)
         fun removeLong(key: String) = setLong(key, null)
         fun removeBoolean(key: String) = setBoolean(key, null)
+
+        val monochromeMode: Boolean get() = getBoolean("monochrome_mode", false)
     }
 
     private var _settings: AndBibleSettings? = null
@@ -1680,6 +1682,7 @@ object CommonUtils : CommonUtilsBase() {
 
     fun parseAndBibleReference(uri: String): BookAndKey?
         = parseAndBibleReference(Uri.parse(uri))
+
 }
 
 const val CALC_NOTIFICATION_CHANNEL = "calc-notifications"
