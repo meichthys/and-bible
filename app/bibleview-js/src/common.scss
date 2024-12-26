@@ -168,6 +168,9 @@ $modal-content-background-color-night: rgb(33, 33, 33);
 
 .highlight-transition {
   transition: background-color 0.5s ease;
+  .noAnimation & {
+    transition: none;
+  }
 }
 
 .isHighlighted {

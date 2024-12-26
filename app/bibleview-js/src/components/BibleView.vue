@@ -16,7 +16,7 @@
   -->
 
 <template>
-  <div @click="ambiguousSelection?.handle" :class="{night: appSettings.nightMode}" :style="topStyle" :dir="direction">
+  <div @click="ambiguousSelection?.handle" :class="{night: appSettings.nightMode, noAnimation}" :style="topStyle" :dir="direction">
     <div class="background" :style="backgroundStyle"/>
     <div :style="`height:${calculatedConfig.topOffset}px`"/>
     <div :style="modalStyle" id="modals"/>
@@ -321,6 +321,9 @@ setupEventBusListener("scroll_up", () => scrollUpDown(true));
 
 useSharing({topElement, android});
 const direction = computed(() => appSettings.rightToLeft ? "rtl" : "ltr");
+
+const noAnimation = computed(() => appSettings.monochromeMode);
+
 </script>
 <style lang="scss">
 @import "~@/common.scss";
