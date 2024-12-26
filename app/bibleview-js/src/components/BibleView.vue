@@ -355,6 +355,9 @@ $ring-color: $button-grey;
     border: $ring-thickness solid $ring-color;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    .noAnimation & {
+      animation: none; // TODO: better loading indicator for noAnimation
+    }
     border-color: $ring-color transparent transparent transparent;
 
     &:nth-child(1) {
