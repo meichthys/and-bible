@@ -570,7 +570,7 @@ a {
   border-width: 2px;
   border-style: solid;
   & > svg {
-    transform: translateX(5mm) translateY(4mm);
+    transform: translateX(-50%) translateY(-50%) translateX(6mm) translateY(6mm) scale(150%);
   }
   color: rgba(0, 0, 0, 0.2);
 }
