@@ -72,7 +72,7 @@ export function useScroll(
 
     function doScrolling(elementY: number, duration = 1000) {
         console.log("doScrolling", elementY, duration);
-        const noScrolling = duration === 0;
+        const noScrolling = duration === 0 || appSettings.monochromeMode;
         stopScrolling(!noScrolling);
         const startingY = window.scrollY;
         const diff = elementY - startingY;
