@@ -486,6 +486,9 @@ $borderDistance: 0;
     background-color: unset;
     border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
   }
+  .night.noAnimation & {
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+  }
 }
 
 .bottom-margin {
@@ -494,6 +497,9 @@ $borderDistance: 0;
   bottom: 0;
   background-color: unset;
   border-top: 1px dashed rgba(0, 0, 0, 0.5);
+  .night & {
+    border-top: 1px dashed rgba(255, 255, 255, 0.5);
+  }
 }
 
 a {
@@ -567,6 +573,10 @@ a {
   height: 12mm;
   border-radius: 50%;
   border-color: rgba(0, 0, 0, 0.2);
+  .night & {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.2);
+  }
   border-width: 2px;
   border-style: solid;
   & > svg {
