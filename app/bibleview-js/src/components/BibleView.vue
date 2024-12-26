@@ -43,7 +43,7 @@
     </div>
     <div v-if="noAnimation">
       <div class="next-page-button" @click.stop="scrollUpDown()">
-        <FontAwesomeIcon icon="chevron-right"/>
+        <FontAwesomeIcon icon="chevron-right" />
       </div>
       <div class="prev-page-button">
         <FontAwesomeIcon icon="chevron-left" @click.stop="scrollUpDown(true)"/>
@@ -561,23 +561,23 @@ a {
 
 .next-page-button {
   position: fixed;
-  right: 2mm;
+  right: 4mm;
   top: 50vh;
-  width: 10mm;
-  height: 10mm;
+  width: 12mm;
+  height: 12mm;
   border-radius: 50%;
   border-color: rgba(0, 0, 0, 0.2);
   border-width: 2px;
   border-style: solid;
   & > svg {
-    transform: translateX(4mm) translateY(50%);
+    transform: translateX(5mm) translateY(4mm);
   }
   color: rgba(0, 0, 0, 0.2);
 }
 
 .prev-page-button {
   @extend .next-page-button;
-  left: 2mm;
+  left: 4mm;
   right: unset;
 }
 
