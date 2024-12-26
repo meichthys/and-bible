@@ -28,6 +28,7 @@
     <div class="window-id" v-if="appSettings.errorBox">{{appSettings.windowId}}</div>
     <DevelopmentMode :current-verse="currentVerse" v-if="config.developmentMode"/>
     <div v-if="calculatedConfig.topMargin > 0" class="top-margin" :style="`height: ${calculatedConfig.topOffset}px;`"/>
+    <div v-if="noAnimation && calculatedConfig.topMargin > 0" class="bottom-margin" :style="`height: ${calculatedConfig.topOffset}px;`"/>
     <div v-if="appSettings.hasActiveIndicator">
       <div class="top-left-corner"/>
       <div class="top-right-corner"/>
@@ -37,10 +38,16 @@
     <div id="top"/>
     <div class="loading" v-if="isLoading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
     <div id="content" ref="topElement" :style="contentStyle">
-      <div style="position: absolute; top: -5000px;" v-if="documents.length === 0">Invisible element to make fonts load
-        properly
-      </div>
+      <div style="position: absolute; top: -5000px;" v-if="documents.length === 0">Invisible element to make fonts load properly</div>
       <DocumentBroker v-for="document in documents" :key="document.id" :document="document"/>
+    </div>
+    <div v-if="noAnimation">
+      <div class="next-page-button" @click.stop="scrollUpDown()">
+        <FontAwesomeIcon icon="chevron-right"/>
+      </div>
+      <div class="prev-page-button">
+        <FontAwesomeIcon icon="chevron-left" @click.stop="scrollUpDown(true)"/>
+      </div>
     </div>
     <div id="bottom"/>
   </div>
@@ -86,6 +93,7 @@ import {useCustomFeatures} from "@/composables/features";
 import {useSharing} from "@/composables/sharing";
 import {AnyDocument, BibleViewDocumentType} from "@/types/documents";
 import AmbiguousSelection from "@/components/modals/AmbiguousSelection.vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 console.log("BibleView setup");
 useAddonFonts();
@@ -312,8 +320,8 @@ setupEventBusListener("adjust_loading_count", (a: number) => {
 const isLoading = computed(() => documents.length === 0 || loadingCount.value > 0);
 
 function scrollUpDown(up = false) {
-    const amount = window.innerHeight / 2;
-    doScrolling(window.pageYOffset + (up ? -amount : amount), 500)
+    const amount = window.innerHeight-2*calculatedConfig.value.topOffset;
+    doScrolling(window.scrollY + (up ? -amount : amount), 500)
 }
 
 setupEventBusListener("scroll_down", () => scrollUpDown());
@@ -468,11 +476,24 @@ $borderDistance: 0;
   left: 0;
   right: 0;
 
-  .night & {
+ .night & {
     background-color: rgba(255, 255, 255, 0.15);
   }
 
   background-color: rgba(0, 0, 0, 0.15);
+
+  .noAnimation & {
+    background-color: unset;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+  }
+}
+
+.bottom-margin {
+  @extend .top-margin;
+  top: unset;
+  bottom: 0;
+  background-color: unset;
+  border-top: 1px dashed rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -537,4 +558,27 @@ a {
   width: 5em;
   height: 1em;
 }
+
+.next-page-button {
+  position: fixed;
+  right: 2mm;
+  top: 50vh;
+  width: 10mm;
+  height: 10mm;
+  border-radius: 50%;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-width: 2px;
+  border-style: solid;
+  & > svg {
+    transform: translateX(4mm) translateY(50%);
+  }
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.prev-page-button {
+  @extend .next-page-button;
+  left: 2mm;
+  right: unset;
+}
+
 </style>

@@ -46,7 +46,9 @@ import {
     faTags,
     faTextWidth,
     faTimes,
-    faTrash
+    faTrash,
+    faChevronLeft,
+    faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function useFontAwesome() {
@@ -111,6 +113,8 @@ export function useFontAwesome() {
         faQuestionCircle,
         faHandPointer,
         faSave,
-        faCheck
+        faCheck,
+        faChevronLeft,
+        faChevronRight,
     );
 }
