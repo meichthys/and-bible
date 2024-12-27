@@ -1297,12 +1297,22 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                 .translationY(binding.speakTransport.height.toFloat())
                 .setInterpolator(AccelerateInterpolator())
                 .withEndAction { binding.speakTransport.visibility = View.GONE }
+                .apply {
+                    if(CommonUtils.settings.disableAnimations) {
+                        duration = 0
+                    }
+                }
                 .start()
         } else {
             binding.speakTransport.visibility = View.VISIBLE
             binding.speakTransport.animate()
                 .translationY(-bottomOffset1.toFloat())
                 .setInterpolator(DecelerateInterpolator())
+                .apply {
+                    if(CommonUtils.settings.disableAnimations) {
+                        duration = 0
+                    }
+                }
                 .start()
         }
         ABEventBus.post(UpdateRestoreWindowButtons())
@@ -1486,7 +1496,11 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                 toolbarLayout.animate().translationY(-toolbarLayout.height.toFloat())
                     .setInterpolator(AccelerateInterpolator())
                     .withEndAction { toolbarLayout.visibility = View.GONE }
-                    .start()
+                    .apply {
+                        if(CommonUtils.settings.disableAnimations) {
+                            duration = 0
+                        }
+                    }.start()
             }
             else {
                 showSystemUI()
@@ -1495,7 +1509,11 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                 toolbarLayout.visibility = View.VISIBLE
                 toolbarLayout.animate().translationY(topOffset1.toFloat())
                     .setInterpolator(DecelerateInterpolator())
-                    .start()
+                    .apply {
+                        if(CommonUtils.settings.disableAnimations) {
+                            duration = 0
+                        }
+                    }.start()
                 updateActions()
             }
         }
