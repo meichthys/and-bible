@@ -49,6 +49,11 @@
         <FontAwesomeIcon icon="chevron-left" @click.stop="scrollUpDown(true)"/>
       </div>
     </div>
+    <div
+        v-if="appSettings.isBottomWindow"
+        @touchmove.stop.prevent
+        class="bottom-touch-block"
+    />
     <div id="bottom"/>
   </div>
 </template>
@@ -589,6 +594,14 @@ a {
   @extend .next-page-button;
   left: 4mm;
   right: unset;
+}
+.bottom-touch-block {
+  position: fixed;
+  bottom: 0;
+  height: 1cm;
+  width: 100%;
+  background: transparent;
+  z-index: 10;
 }
 
 </style>

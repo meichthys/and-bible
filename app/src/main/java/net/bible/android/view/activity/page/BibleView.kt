@@ -1322,6 +1322,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
                     config: ${displaySettings.toJson()}, 
                     appSettings: {
                         activeWindow: $isActive,
+                        isBottomWindow: $isBottomWindow,
                         hasActiveIndicator: $hasActiveIndicator, 
                         nightMode: $nightMode, 
                         errorBox: $showErrorBox, 
@@ -1637,7 +1638,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
     fun onEvent(event: NumberOfWindowsChangedEvent) {
         if(window.isVisible) {
             updateOffsets(true)
-            updateActive()
+            updateConfig()
         }
     }
 

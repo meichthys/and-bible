@@ -91,6 +91,7 @@ export type BibleModalButtonId = "BOOKMARK"|"BOOKMARK_NOTES"|"MY_NOTES"|"SHARE"|
 export type GenericModalButtonId = "BOOKMARK"|"BOOKMARK_NOTES"|"SPEAK"
 
 export type AppSettings = {
+    isBottomWindow: boolean,
     topOffset: number,
     bottomOffset: number,
     nightMode: boolean,
@@ -170,6 +171,7 @@ export function useConfig(documentType: Ref<BibleViewDocumentType>) {
     const nightMode = new URLSearchParams(window.location.search).get("night") === "true";
     const appSettings: AppSettings = reactive({
         topOffset: 0,
+        isBottomWindow: false,
         bottomOffset: 100,
         nightMode: nightMode,
         errorBox: false,
