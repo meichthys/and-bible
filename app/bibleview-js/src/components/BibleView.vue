@@ -330,7 +330,7 @@ setupEventBusListener("scroll_up", () => scrollUpDown(true));
 useSharing({topElement, android});
 const direction = computed(() => appSettings.rightToLeft ? "rtl" : "ltr");
 
-const noAnimation = computed(() => appSettings.monochromeMode);
+const noAnimation = computed(() => appSettings.disableAnimations);
 
 </script>
 <style lang="scss">

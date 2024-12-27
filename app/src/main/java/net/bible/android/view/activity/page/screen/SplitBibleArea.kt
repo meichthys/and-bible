@@ -543,7 +543,7 @@ class SplitBibleArea(private val mainBibleActivity: MainBibleActivity): FrameLay
                     withEndAction {
                         buttonsWillAnimate = false
                     }
-                    if(CommonUtils.settings.monochromeMode) {
+                    if(CommonUtils.settings.disableAnimations) {
                         duration = 0
                     }
                     start()
@@ -596,7 +596,7 @@ class SplitBibleArea(private val mainBibleActivity: MainBibleActivity): FrameLay
                     .setInterpolator(DecelerateInterpolator())
                     .withEndAction { Log.i(TAG, "animate finished") }
                     .apply {
-                        if(CommonUtils.settings.monochromeMode) {
+                        if(CommonUtils.settings.disableAnimations) {
                             setDuration(0)
                         }
                     }
@@ -628,7 +628,7 @@ class SplitBibleArea(private val mainBibleActivity: MainBibleActivity): FrameLay
             bibleReferenceOverlay.animate().alpha(1.0f)
                 .setInterpolator(DecelerateInterpolator())
                 .apply {
-                    if(CommonUtils.settings.monochromeMode) {
+                    if(CommonUtils.settings.disableAnimations) {
                         setDuration(0)
                     }
                 }
@@ -638,7 +638,7 @@ class SplitBibleArea(private val mainBibleActivity: MainBibleActivity): FrameLay
                 .setInterpolator(AccelerateInterpolator())
                 .withEndAction { bibleReferenceOverlay.visibility = View.GONE }
                 .apply {
-                    if(CommonUtils.settings.monochromeMode) {
+                    if(CommonUtils.settings.disableAnimations) {
                         setDuration(0)
                     }
                 }.start()

@@ -430,6 +430,7 @@ object CommonUtils : CommonUtilsBase() {
         fun removeBoolean(key: String) = setBoolean(key, null)
 
         val monochromeMode: Boolean get() = getBoolean("monochrome_mode", false)
+        val disableAnimations: Boolean get() = getBoolean("disable_animations", false)
     }
 
     private var _settings: AndBibleSettings? = null

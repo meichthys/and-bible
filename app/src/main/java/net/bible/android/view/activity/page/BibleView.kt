@@ -1316,6 +1316,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
             CommonUtils.settings.getStringSet("gen_bookmark_modal_buttons", setOf("BOOKMARK", "BOOKMARK_NOTES", "SPEAK"))
         )
         val monochromeMode = CommonUtils.settings.monochromeMode
+        val disableAnimations = CommonUtils.settings.disableAnimations
         return """
                 bibleView.emit('set_config', {
                     config: ${displaySettings.toJson()}, 
@@ -1332,6 +1333,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
                         bibleModalButtons: $bibleModalButtons, 
                         genericModalButtons: $genericModalButtons, 
                         monochromeMode: $monochromeMode,
+                        disableAnimations: $disableAnimations,
                     }, 
                     initial: $initial,
                     });

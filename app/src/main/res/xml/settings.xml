@@ -190,8 +190,14 @@
 			android:icon="@drawable/ic_bug_report_white_24dp"
 			/>
         <SwitchPreferenceCompat android:key="monochrome_mode"
-            android:title="@string/monochrome_title"
-            android:summary="@string/prefs_monochrome_summary"
+            android:title="@string/prefs_e_ink_mode_title"
+            android:summary="@string/prefs_eink_mode_summary"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_color_settings_24dp"
+            />
+        <SwitchPreferenceCompat android:key="disable_animations"
+            android:title="@string/prefs_disable_animations_title"
+            android:summary="@string/prefs_disable_animations_summary"
             android:defaultValue="false"
             android:icon="@drawable/ic_color_settings_24dp"
             />

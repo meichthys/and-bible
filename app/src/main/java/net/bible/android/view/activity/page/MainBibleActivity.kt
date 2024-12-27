@@ -339,9 +339,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
 
         var currentSliderOffset = 0.0F
 
-        val monochromeMode = CommonUtils.settings.monochromeMode
-
-        if (monochromeMode) {
+        if (CommonUtils.settings.monochromeMode) {
             binding.drawerLayout.setScrimColor(Color.TRANSPARENT)
         }
 

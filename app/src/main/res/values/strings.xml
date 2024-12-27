@@ -1235,6 +1235,4 @@
     <string name="dont_show">
         Don\'t show this message again
     </string>
-    <string name="monochrome_title">Monochrome (E-ink) mode</string>
-    <string name="prefs_monochrome_summary">Disable colors and animations</string>
 </resources>
