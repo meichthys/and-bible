@@ -111,6 +111,7 @@ export type AppSettings = {
     genericModalButtons: GenericModalButtonId[],
     monochromeMode: boolean,
     disableAnimations: boolean,
+    fontSizeMultiplier: number,
 }
 
 export type CalculatedConfig = Ref<{
@@ -190,6 +191,7 @@ export function useConfig(documentType: Ref<BibleViewDocumentType>) {
         genericModalButtons: ["BOOKMARK", "BOOKMARK_NOTES", "SPEAK"],
         monochromeMode: false,
         disableAnimations: false,
+        fontSizeMultiplier: 1.0,
     });
 
     function calcMmInPx() {

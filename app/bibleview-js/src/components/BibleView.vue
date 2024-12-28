@@ -266,8 +266,8 @@ const contentStyle = computed(() => {
           line-height: ${config.lineSpacing / 10}em;
           text-align: ${config.justifyText ? "justify" : "start"};
           font-family: ${config.fontFamily};
-          font-size: ${config.fontSize}px;
-          --font-size: ${config.fontSize}px;
+          font-size: ${config.fontSize*appSettings.fontSizeMultiplier}px;
+          --font-size: ${config.fontSize*appSettings.fontSizeMultiplier}px;
           `;
     if (config.marginSize.marginLeft || config.marginSize.marginRight) {
         style += `
@@ -282,7 +282,7 @@ const modalStyle = computed(() => {
     return `
           --bottom-offset: ${appSettings.bottomOffset}px;
           --top-offset: ${appSettings.topOffset}px;
-          --font-size:${config.fontSize}px;
+          --font-size:${config.fontSize*appSettings.fontSizeMultiplier}px;
           --font-family:${config.fontFamily};`
 });
 

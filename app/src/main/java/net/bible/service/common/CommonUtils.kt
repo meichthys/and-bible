@@ -431,6 +431,8 @@ object CommonUtils : CommonUtilsBase() {
 
         val monochromeMode: Boolean get() = getBoolean("monochrome_mode", false)
         val disableAnimations: Boolean get() = getBoolean("disable_animations", false)
+        val fontSizeMultiplier: Int get() = getInt("font_size_multiplier", 100)
+        val fontSizeMultiplierFloat: Float get() = getInt("font_size_multiplier", 100) / 100F
     }
 
     private var _settings: AndBibleSettings? = null

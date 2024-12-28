@@ -201,6 +201,14 @@
             android:defaultValue="false"
             android:icon="@drawable/ic_color_settings_24dp"
             />
+        <SeekBarPreference android:key="font_size_multiplier"
+            android:title="@string/pref_font_size_multiplier_title"
+            android:summary=""
+            android:defaultValue="100"
+            android:min="10"
+            android:max="500"
+            android:icon="@drawable/ic_color_settings_24dp"
+            />
 		<Preference android:key="open_links"
 			android:title="@string/open_bible_links_title"
 			android:summary="@string/open_bible_links_summary"

@@ -34,6 +34,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceDataStore
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SeekBarPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -149,6 +150,9 @@ class SettingsActivity: ActivityBase() {
                     "google_drive_sync",
                     "bible_bookmark_modal_buttons",
                     "gen_bookmark_modal_buttons",
+                    "monochrome_mode",
+                    "disable_animations",
+                    "font_size_multiplier"
                 )
                 for(key in keys) {
                     editor.removeString(key)
@@ -219,6 +223,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val showGreekMorph = setupDictionary(greekMorph, FeatureType.GREEK_PARSE)
         val dictCategory = preferenceScreen.findPreference<PreferenceCategory>("dictionaries_category") as PreferenceCategory
         dictCategory.isVisible = showGreek || showHebrew || showGreekMorph
+        val fontSizeMultiplier = preferenceScreen.findPreference<SeekBarPreference>("font_size_multiplier") as SeekBarPreference
+        fontSizeMultiplier.summary = getString(R.string.pref_font_size_multiplier_summary, CommonUtils.settings.fontSizeMultiplier.toString())
+        fontSizeMultiplier.setOnPreferenceChangeListener { pref, newValue ->
+            fontSizeMultiplier.summary = getString(R.string.pref_font_size_multiplier_summary, (newValue as Int).toString())
+            true
+        }
 
         preferenceScreen.findPreference<ListPreference>("toolbar_button_actions")?.apply {
                 if (value.isNullOrBlank())

@@ -1335,6 +1335,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
                         genericModalButtons: $genericModalButtons, 
                         monochromeMode: $monochromeMode,
                         disableAnimations: $disableAnimations,
+                        fontSizeMultiplier: ${CommonUtils.settings.fontSizeMultiplierFloat},
                     }, 
                     initial: $initial,
                     });

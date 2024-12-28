@@ -1235,4 +1235,6 @@
     <string name="dont_show">
         Don\'t show this message again
     </string>
+    <string name="pref_font_size_multiplier_title">Font size multiplier</string>
+    <string name="pref_font_size_multiplier_summary">Multiply font sizes by this number. Current value: %s%%</string>
 </resources>
