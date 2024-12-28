@@ -174,6 +174,7 @@ $border-radius2: $border-radius - 1.5pt;
   animation-duration: 0.2s;
   .noAnimation & {
     animation: none;
+    box-shadow: none;
   }
 
   .night & {
