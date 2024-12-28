@@ -49,6 +49,7 @@ import {
     faTrash,
     faChevronLeft,
     faChevronRight,
+    faDroplet,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function useFontAwesome() {
