@@ -51,6 +51,7 @@ import net.bible.service.common.htmlToSpan
 import net.bible.service.device.ScreenSettings.autoModeAvailable
 import org.crosswire.jsword.book.Books
 import org.crosswire.jsword.book.FeatureType
+import java.util.Locale
 
 class PreferenceStore: PreferenceDataStore() {
     private val prefs = CommonUtils.settings
@@ -224,9 +225,17 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val dictCategory = preferenceScreen.findPreference<PreferenceCategory>("dictionaries_category") as PreferenceCategory
         dictCategory.isVisible = showGreek || showHebrew || showGreekMorph
         val fontSizeMultiplier = preferenceScreen.findPreference<SeekBarPreference>("font_size_multiplier") as SeekBarPreference
-        fontSizeMultiplier.summary = getString(R.string.pref_font_size_multiplier_summary, CommonUtils.settings.fontSizeMultiplier.toString())
+        fontSizeMultiplier.summary = getString(
+            R.string.pref_font_size_multiplier_summary,
+            String.format(Locale.getDefault(), "%1.1f",
+                CommonUtils.settings.fontSizeMultiplierFloat)
+        )
         fontSizeMultiplier.setOnPreferenceChangeListener { pref, newValue ->
-            fontSizeMultiplier.summary = getString(R.string.pref_font_size_multiplier_summary, (newValue as Int).toString())
+            fontSizeMultiplier.summary = getString(
+                R.string.pref_font_size_multiplier_summary,
+                String.format(Locale.getDefault(), "%1.2f",
+                    CommonUtils.settings.fontSizeMultiplierFloat)
+            )
             true
         }
 
