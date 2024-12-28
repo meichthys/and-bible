@@ -257,7 +257,9 @@ async function toggleInfo(event: MouseEvent | TouchEvent) {
   .night & {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0), $night-modal-header-background-color 75%, $night-modal-header-background-color 100%);
   }
-
+  .monochrome & {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0), black 75%, black 100%);
+  }
   [dir=ltr] & {
     right: 80px;
   }

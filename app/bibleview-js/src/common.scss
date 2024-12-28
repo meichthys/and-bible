@@ -98,6 +98,9 @@ $button-grey: #8e8e8e;
 .button {
   font-size: 90%;
   background-color: $button-grey;
+  .monochrome & {
+    background-color: black;
+  }
   + .toggled {
     background-color: #474747;
     &.light {
@@ -106,10 +109,17 @@ $button-grey: #8e8e8e;
   }
   &.light {
     background-color: #bdbdbd;
+    .monochrome & {
+      background-color: white;
+    }
     color: black;
     .night & {
       background-color: #616161;
       color: #bdbdbd;
+    }
+    .night.monochrome & {
+      background-color: black;
+      color: white;
     }
   }
   &.warning {

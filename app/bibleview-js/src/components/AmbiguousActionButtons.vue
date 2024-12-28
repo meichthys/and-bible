@@ -178,6 +178,12 @@ setupKeyboardListener((e: KeyboardEvent) => {
     //    padding-inline-end: 14px;  // Causes non-alignment of the icons in the verse action dialog.
     .horizontal & {
       color: $button-grey;
+      .monochrome & {
+        color: black;
+      }
+      .night.monochrome & {
+        color: white;
+      }
       margin: 0 auto 0 auto;
       padding-bottom: 5px;
       $size: 20px;

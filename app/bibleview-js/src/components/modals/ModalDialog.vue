@@ -216,6 +216,11 @@ $border-radius2: $border-radius - 1.5pt;
   padding-left: 0.5em;
   background-color: $modal-header-background-color;
   --header-backround: #{$modal-header-background-color};
+  .monochrome & {
+    background-color: black;
+    --header-backround: black;
+
+  }
   color: white;
   font-weight: bold;
   border-radius: $border-radius2 $border-radius2 0 0;
@@ -224,6 +229,11 @@ $border-radius2: $border-radius - 1.5pt;
     background-color: $night-modal-header-background-color;
     --header-backround: #{$night-modal-header-background-color};
     color: #e2e2e2;
+  }
+  .monochrome.night & {
+    background-color: black;
+    --header-backround: black;
+    color: white;
   }
 }
 
