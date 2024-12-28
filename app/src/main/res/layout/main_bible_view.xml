@@ -154,6 +154,13 @@
                     app:srcCompat="@drawable/ic_workspace_solid_24dp"
                     />
                 <ImageButton
+                    android:id="@+id/forceSyncButton"
+                    style="@style/MyActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/windowSynchronise"
+                    app:srcCompat="@drawable/ic_syncdb_24dp" />
+                <ImageButton
                     android:id="@+id/optionsMenu"
                     style="@style/MyActionButton"
                     android:layout_width="wrap_content"
