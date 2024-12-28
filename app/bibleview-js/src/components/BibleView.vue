@@ -16,7 +16,7 @@
   -->
 
 <template>
-  <div @click="ambiguousSelection?.handle" :class="{night: appSettings.nightMode, noAnimation, monochrome: appSettings.monochromeMode}" :style="topStyle" :dir="direction">
+  <div @click="ambiguousSelection?.handle" :class="{night: appSettings.nightMode, noAnimation}" :style="topStyle" :dir="direction">
     <div class="background" :style="backgroundStyle"/>
     <div :style="`height:${calculatedConfig.topOffset}px`"/>
     <div :style="modalStyle" id="modals"/>

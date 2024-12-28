@@ -186,12 +186,6 @@ const {strings} = useCommon();
   cursor: pointer;
   font-size: 25px;
   color: $button-grey;
-  .monochrome & {
-    color: black;
-  }
-  .monochrome.night & {
-    color: white;
-  }
   padding: 5px;
 
   &.end {
