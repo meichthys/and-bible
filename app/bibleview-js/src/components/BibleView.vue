@@ -28,7 +28,6 @@
     <div class="window-id" v-if="appSettings.errorBox">{{appSettings.windowId}}</div>
     <DevelopmentMode :current-verse="currentVerse" v-if="config.developmentMode"/>
     <div v-if="calculatedConfig.topMargin > 0" class="top-margin" :style="`height: ${calculatedConfig.topOffset}px;`"/>
-    <div v-if="noAnimation && calculatedConfig.topMargin > 0" class="bottom-margin" :style="`height: ${calculatedConfig.topOffset}px;`"/>
     <div v-if="appSettings.hasActiveIndicator">
       <div class="top-left-corner"/>
       <div class="top-right-corner"/>
@@ -325,7 +324,10 @@ setupEventBusListener("adjust_loading_count", (a: number) => {
 const isLoading = computed(() => documents.length === 0 || loadingCount.value > 0);
 
 function scrollUpDown(up = false) {
-    const amount = window.innerHeight-2*calculatedConfig.value.topOffset;
+    const amount =
+        window.innerHeight
+        - calculatedConfig.value.topOffset
+        - 1.5*lineHeight.value; // 1.5 times because last line might be otherwise displayed partially
     doScrolling(window.scrollY + (up ? -amount : amount), 500)
 }
 
@@ -493,17 +495,6 @@ $borderDistance: 0;
   }
   .night.noAnimation & {
     border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
-  }
-}
-
-.bottom-margin {
-  @extend .top-margin;
-  top: unset;
-  bottom: 0;
-  background-color: unset;
-  border-top: 1px dashed rgba(0, 0, 0, 0.5);
-  .night & {
-    border-top: 1px dashed rgba(255, 255, 255, 0.5);
   }
 }
 
