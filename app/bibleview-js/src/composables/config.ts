@@ -210,7 +210,7 @@ export function useConfig(documentType: Ref<BibleViewDocumentType>) {
     const calculatedConfig = computed(() => {
         let topOffset = appSettings.topOffset;
         let topMargin = 0;
-        if (isBible.value || appSettings.monochromeMode) {
+        if (isBible.value) {
             topMargin = config.topMargin * mmInPx;
             topOffset += topMargin;
         }
