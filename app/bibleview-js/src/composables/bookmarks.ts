@@ -526,7 +526,9 @@ export function useBookmarks(
         });
     }
 
-    const monochromeHighlightColor = appSettings.nightMode ? Color.rgb(100, 100, 100): Color.rgb(180, 180, 180);
+    const monochromeHighlightColor = appSettings.nightMode
+        ? Color.rgb(180, 180, 180)
+        : Color.rgb(180, 180, 180);
 
     function highlightColor(label: LabelAndStyle, count: number): Color {
         if (appSettings.monochromeMode) {
