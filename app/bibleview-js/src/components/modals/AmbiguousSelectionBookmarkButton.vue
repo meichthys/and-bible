@@ -53,7 +53,6 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {globalBookmarksKey, locateTopKey} from "@/types/constants";
 import {BaseBookmark} from "@/types/client-objects";
 import {isBibleBookmark} from "@/composables/bookmarks";
-import {black, white} from "@/composables/config";
 
 const $emit = defineEmits(["selected"]);
 const props = defineProps<{ bookmarkId: IdType }>();

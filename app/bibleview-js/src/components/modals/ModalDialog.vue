@@ -53,7 +53,7 @@
   </teleport>
 </template>
 <script setup lang="ts">
-import {computed, inject, nextTick, onMounted, onUnmounted, ref, shallowRef, watch} from "vue";
+import {inject, nextTick, onMounted, onUnmounted, ref, shallowRef, watch} from "vue";
 import {useCommon} from "@/composables";
 import {draggableElement, setupDocumentEventListener, setupWindowEventListener,} from "@/utils";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";

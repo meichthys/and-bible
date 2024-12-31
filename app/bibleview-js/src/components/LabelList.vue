@@ -42,7 +42,7 @@ import {computed, inject, ref, Ref, watch} from "vue";
 import {addAll, clickWaiter, removeAll} from "@/utils";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {sortBy} from "lodash";
-import {androidKey, appSettingsKey, globalBookmarksKey, locateTopKey} from "@/types/constants";
+import {androidKey, globalBookmarksKey, locateTopKey} from "@/types/constants";
 import {BaseBookmark, LabelAndStyle} from "@/types/client-objects";
 import BookmarkLabelActions from "@/components/modals/BookmarkLabelActions.vue";
 
