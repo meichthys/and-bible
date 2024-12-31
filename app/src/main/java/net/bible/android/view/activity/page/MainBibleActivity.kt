@@ -983,7 +983,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
         val maxButtons: Int = (maxWidth / approximateSize).toInt()
         val showSearch = documentControl.currentPage.currentPage.isSearchable
         val showSpeak = documentControl.currentPage.currentPage.isSpeakable
-        val showForceSync = CommonUtils.isCloudSyncEnabled
+        val showForceSync = false // Disabled as unnecessary for now. CommonUtils.isCloudSyncEnabled
 
         fun shouldShowBibleButton(): Boolean =
             toolbarButtonSetting?.let {
