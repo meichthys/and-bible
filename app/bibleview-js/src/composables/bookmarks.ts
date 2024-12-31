@@ -133,7 +133,9 @@ export function verseHighlighting(
         let span = 0;
         for (const {label: s, id} of underlineLabels) {
             for (let i = 0; i < underlineLabelCount.get(id)!; i++) {
-                const color = appSettings.monochromeMode ? monochromeUnderlineColor: new Color(s.color).hsl();
+                const color = appSettings.monochromeMode
+                    ? monochromeUnderlineColor
+                    : new Color(s.color).hsl();
                 underlineColors.push(color.string());
             }
         }
