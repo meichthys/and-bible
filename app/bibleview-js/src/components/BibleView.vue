@@ -40,14 +40,8 @@
       <div style="position: absolute; top: -5000px;" v-if="documents.length === 0">Invisible element to make fonts load properly</div>
       <DocumentBroker v-for="document in documents" :key="document.id" :document="document"/>
     </div>
-    <div v-if="noAnimation">
-      <div class="next-page-button" @click.stop="scrollUpDown()">
-        <FontAwesomeIcon icon="chevron-right" />
-      </div>
-      <div class="prev-page-button">
-        <FontAwesomeIcon icon="chevron-left" @click.stop="scrollUpDown(true)"/>
-      </div>
-    </div>
+    <div class="prev-page-button" @click.stop="scrollUpDown(true)" :style="{width: `${calculatedConfig.marginLeft}px`}"/>
+    <div class="next-page-button" @click.stop="scrollUpDown()" :style="{width: `${calculatedConfig.marginRight}px`}" />
     <div
         v-if="appSettings.isBottomWindow"
         @touchmove.stop.prevent
@@ -563,29 +557,18 @@ a {
 
 .next-page-button {
   position: fixed;
-  right: 4mm;
-  top: 50vh;
-  width: 12mm;
-  height: 12mm;
-  border-radius: 50%;
-  border-color: transparent; //rgba(0, 0, 0, 0.2);
-  .night & {
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.2);
-  }
-  border-width: 2px;
-  border-style: solid;
-  & > svg {
-    transform: translateX(-50%) translateY(-50%) translateX(6mm) translateY(6mm) scale(150%);
-  }
-  color: rgba(0, 0, 0, 0.2);
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 0;
 }
 
 .prev-page-button {
   @extend .next-page-button;
-  left: 4mm;
+  left: 0;
   right: unset;
 }
+
 .bottom-touch-block {
   position: fixed;
   bottom: 0;

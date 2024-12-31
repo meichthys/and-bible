@@ -16,10 +16,10 @@
  */
 
 
-import {computed, nextTick, reactive, Ref} from "vue";
+import {computed, nextTick, reactive, Ref, shallowRef, triggerRef} from "vue";
 import {emit, setupEventBusListener} from "@/eventbus";
 import {isEqual} from "lodash";
-import {Deferred} from "@/utils";
+import {Deferred, setupWindowEventListener} from "@/utils";
 import {BibleViewDocumentType} from "@/types/documents";
 
 export type StrongsMode = 0 | 1 | 2 | 3
@@ -206,15 +206,29 @@ export function useConfig(documentType: Ref<BibleViewDocumentType>) {
     const mmInPx = calcMmInPx();
 
     const isBible = computed(() => documentType.value === "bible");
+    const resizeTrigger = shallowRef();
+    setupWindowEventListener("resize", () => triggerRef(resizeTrigger));
 
     const calculatedConfig = computed(() => {
+        resizeTrigger.value;
         let topOffset = appSettings.topOffset;
         let topMargin = 0;
         if (isBible.value) {
             topMargin = config.topMargin * mmInPx;
             topOffset += topMargin;
         }
-        return {topOffset, topMargin};
+        const windowWidth = window.innerWidth;
+        const maxWidth = config.marginSize.maxWidth * mmInPx;
+        const leftPadding = config.marginSize.marginLeft * mmInPx;
+        const rightPadding = config.marginSize.marginRight * mmInPx;
+
+        const elementWidth = Math.min(maxWidth, windowWidth - leftPadding - rightPadding);
+        const margin = (windowWidth - elementWidth) / 2;
+
+        const marginLeft = margin + (leftPadding - rightPadding)/2;
+        const marginRight = margin + (rightPadding - leftPadding)/2;
+
+        return {topOffset, topMargin, marginLeft, marginRight};
     });
 
     window.bibleViewDebug.config = config;
