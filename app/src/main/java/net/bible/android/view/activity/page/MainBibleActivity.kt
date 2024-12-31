@@ -311,8 +311,8 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                 checkDocBackupDBInSync()
             }
             initialized = true
-            startSync()
         }
+        syncScope.launch { startSync() }
         if(intent.hasExtra("openLink")) {
             val uri = Uri.parse(intent.getStringExtra("openLink"))
             openLink(uri)
@@ -1430,7 +1430,10 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
             syncScope.launch { synchronize(true) }
         } else {
             updateActions()
-            syncScope.launch { startSync() }
+            syncScope.launch {
+                delay(2000) // Wait a little bit as wifi might be auto-turned on after returning from sleep
+                startSync()
+            }
         }
     }
 
