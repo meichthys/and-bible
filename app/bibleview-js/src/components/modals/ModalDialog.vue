@@ -185,6 +185,10 @@ $border-radius2: $border-radius - 1.5pt;
     color: #bdbdbd;
   }
 
+  .monochrome.night & {
+    border-color: white;
+  }
+
   border-radius: $border-radius;
   width: var(--modal-width);
 
@@ -227,6 +231,9 @@ $border-radius2: $border-radius - 1.5pt;
     background-color: $night-modal-header-background-color;
     --header-backround: #{$night-modal-header-background-color};
     color: #e2e2e2;
+  }
+  .monochrome.night & {
+    color: white;
   }
 }
 

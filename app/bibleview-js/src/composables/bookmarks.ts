@@ -528,7 +528,7 @@ export function useBookmarks(
 
     const monochromeHighlightColor = appSettings.nightMode
         ? Color.rgb(180, 180, 180)
-        : Color.rgb(180, 180, 180);
+        : Color.rgb(210, 210, 210);
 
     function highlightColor(label: LabelAndStyle, count: number): Color {
         if (appSettings.monochromeMode) {
