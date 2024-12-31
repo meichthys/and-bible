@@ -91,13 +91,15 @@ export function verseHighlighting(
         highlightLabelCount,
         underlineLabels,
         underlineLabelCount,
-        highlightColorFn
+        highlightColorFn,
+        appSettings,
     }: {
         highlightLabels: LabelAndId[],
         highlightLabelCount: LabelCountMap,
         underlineLabels: LabelAndId[],
         underlineLabelCount: LabelCountMap,
         highlightColorFn: (label: LabelAndStyle, count: number) => Color,
+        appSettings: AppSettings,
     }): string
 {
     // Percentage heights allocated to background highlight
@@ -106,6 +108,8 @@ export function verseHighlighting(
     const underlineHeight = 4;
     const spaceBetweenLines = 2;
     let gradientCSS = '';
+
+    const monochromeUnderlineColor = Color(appSettings.nightMode ? "white": "black");
 
     {
         // Generate background gradients
@@ -129,7 +133,8 @@ export function verseHighlighting(
         let span = 0;
         for (const {label: s, id} of underlineLabels) {
             for (let i = 0; i < underlineLabelCount.get(id)!; i++) {
-                underlineColors.push(new Color(s.color).hsl().string());
+                const color = appSettings.monochromeMode ? monochromeUnderlineColor: new Color(s.color).hsl();
+                underlineColors.push(color.string());
             }
         }
         if (underlineColors.length !== 0) {
@@ -512,11 +517,21 @@ export function useBookmarks(
             })).filter(l => !l.label.isSpeak);
 
         return verseHighlighting({
-            highlightLabels, highlightLabelCount, underlineLabels, underlineLabelCount, highlightColorFn: highlightColor
+            highlightLabels,
+            highlightLabelCount,
+            underlineLabels,
+            underlineLabelCount,
+            highlightColorFn: highlightColor,
+            appSettings
         });
     }
 
+    const monochromeHighlightColor = appSettings.nightMode ? Color.rgb(100, 100, 100): Color.rgb(180, 180, 180);
+
     function highlightColor(label: LabelAndStyle, count: number): Color {
+        if (appSettings.monochromeMode) {
+            return monochromeHighlightColor;
+        }
         let c = new Color(label.color)
         c = c.alpha(appSettings.nightMode ? 0.4 : 0.3)
         for (let i = 0; i < count - 1; i++) {

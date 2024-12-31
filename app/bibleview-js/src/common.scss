@@ -93,7 +93,11 @@
 
 $button-border-radius: 8px;
 $button-padding: 6px;
-$button-grey: #8e8e8e;
+:root {
+  --button-grey: #8e8e8e;
+}
+//#8e8e8e;
+$button-grey: var(--button-grey);
 
 .button {
   font-size: 90%;
