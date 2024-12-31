@@ -322,7 +322,7 @@ function scrollUpDown(up = false) {
         window.innerHeight
         - calculatedConfig.value.topOffset
         - 1.5*lineHeight.value; // 1.5 times because last line might be otherwise displayed partially
-    doScrolling(window.scrollY + (up ? -amount : amount), 500)
+    doScrolling(window.scrollY + (up ? -amount : amount), 200)
 }
 
 setupEventBusListener("scroll_down", () => scrollUpDown());
