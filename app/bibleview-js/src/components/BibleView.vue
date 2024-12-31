@@ -40,8 +40,10 @@
       <div style="position: absolute; top: -5000px;" v-if="documents.length === 0">Invisible element to make fonts load properly</div>
       <DocumentBroker v-for="document in documents" :key="document.id" :document="document"/>
     </div>
-    <div class="prev-page-button" @click.stop="scrollUpDown(true)" :style="{width: `${calculatedConfig.marginLeft}px`}"/>
-    <div class="next-page-button" @click.stop="scrollUpDown()" :style="{width: `${calculatedConfig.marginRight}px`}" />
+    <template v-if="!modalOpen">
+      <div class="prev-page-button" @click.stop="scrollUpDown(true)" :style="{width: `${calculatedConfig.marginLeft}px`}"/>
+      <div class="next-page-button" @click.stop="scrollUpDown()" :style="{width: `${calculatedConfig.marginRight}px`}" />
+    </template>
     <div
         v-if="appSettings.isBottomWindow"
         @touchmove.stop.prevent
@@ -91,7 +93,6 @@ import {useCustomFeatures} from "@/composables/features";
 import {useSharing} from "@/composables/sharing";
 import {AnyDocument, BibleViewDocumentType} from "@/types/documents";
 import AmbiguousSelection from "@/components/modals/AmbiguousSelection.vue";
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 console.log("BibleView setup");
 useAddonFonts();
@@ -141,7 +142,7 @@ function getFootNoteCount() {
 
 provide(footnoteCountKey, {getFootNoteCount});
 
-const {closeModals} = modal;
+const {closeModals, modalOpen} = modal;
 
 const mounted = ref(false);
 
@@ -318,9 +319,6 @@ setupEventBusListener("adjust_loading_count", (a: number) => {
 const isLoading = computed(() => documents.length === 0 || loadingCount.value > 0);
 
 function scrollUpDown(up = false) {
-    if (modal.modalOpen.value) {
-        return;
-    }
     const amount =
         window.innerHeight
         - calculatedConfig.value.topOffset
