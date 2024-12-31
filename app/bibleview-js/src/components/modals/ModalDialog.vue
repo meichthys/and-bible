@@ -151,6 +151,9 @@ defineExpose({height});
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  .monochrome & {
+    background-color: unset;
+  }
 }
 
 $border-radius: 8pt;
