@@ -318,6 +318,9 @@ setupEventBusListener("adjust_loading_count", (a: number) => {
 const isLoading = computed(() => documents.length === 0 || loadingCount.value > 0);
 
 function scrollUpDown(up = false) {
+    if (modal.modalOpen.value) {
+        return;
+    }
     const amount =
         window.innerHeight
         - calculatedConfig.value.topOffset
