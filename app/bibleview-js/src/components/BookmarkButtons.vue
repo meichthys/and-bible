@@ -198,6 +198,9 @@ function buttonColor(color: ColorParam, highlighted = false) {
   cursor: pointer;
   font-size: 25px;
   color: $button-grey;
+  .night.monochrome & {
+    color: white;
+  }
   padding: 5px;
 
   &.end {
