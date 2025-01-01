@@ -54,30 +54,33 @@ export function useVerseNotifier(
     // totally frozen during scrolling
     const onScroll = throttle(() => {
         if (isScrolling.value) return;
-        const y = calculatedConfig.value.topOffset + lineHeight.value * 0.8;
+        let y = calculatedConfig.value.topOffset + lineHeight.value * 0.8;
 
         // Find element, starting from right
         let element: Nullable<HTMLElement>;
         let directionChanged = true;
         while (directionChanged) {
             directionChanged = false;
-            for (const x of iterate(lastDirection)) {
-                element = document.elementFromPoint(x, y) as Nullable<HTMLElement>
-                if (element) {
-                    element = element.closest(".ordinal") as Nullable<HTMLElement>;
+            while (y < window.innerHeight) {
+                for (const x of iterate(lastDirection)) {
+                    element = document.elementFromPoint(x, y) as Nullable<HTMLElement>
                     if (element) {
-                        const direction = window.getComputedStyle(element).getPropertyValue("direction");
-                        if (direction !== lastDirection) {
-                            directionChanged = true;
-                            lastDirection = direction;
-                            break;
+                        element = element.closest(".ordinal") as Nullable<HTMLElement>;
+                        if (element) {
+                            const direction = window.getComputedStyle(element).getPropertyValue("direction");
+                            if (direction !== lastDirection) {
+                                directionChanged = true;
+                                lastDirection = direction;
+                                break;
+                            }
+                            currentVerse.value = parseInt(element.dataset.ordinal!)
+                            const doc = element.closest(".document") as Nullable<HTMLElement>
+                            currentKey.value = doc?.dataset.osisRef || ""
+                            return;
                         }
-                        currentVerse.value = parseInt(element.dataset.ordinal!)
-                        const doc = element.closest(".document") as Nullable<HTMLElement>
-                        currentKey.value = doc?.dataset.osisRef || ""
-                        break;
                     }
                 }
+                y += lineHeight.value;
             }
         }
     }, 50);
