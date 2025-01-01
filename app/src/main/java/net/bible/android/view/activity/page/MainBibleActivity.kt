@@ -699,9 +699,6 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                 }
                 prefOptions.openDialog(this@MainBibleActivity, onChanged = {apply()}, onReset = {apply()})
             }
-            forceSyncButton.setOnClickListener {
-                syncScope.launch { synchronize(true) }
-            }
 
             speakButton.setOnClickListener {
                 if(transportBarVisible) {
@@ -994,7 +991,6 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
         val maxButtons: Int = (maxWidth / approximateSize).toInt()
         val showSearch = documentControl.currentPage.currentPage.isSearchable
         val showSpeak = documentControl.currentPage.currentPage.isSpeakable
-        val showForceSync = false // Disabled as unnecessary for now. CommonUtils.isCloudSyncEnabled
 
         fun shouldShowBibleButton(): Boolean =
             toolbarButtonSetting?.let {
@@ -1074,13 +1070,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                     View.VISIBLE
                 } else View.GONE
             }
-            fun addForceSync() {
-                forceSyncButton.visibility = if (visibleButtonCount < maxButtons && showForceSync)
-                {
-                    visibleButtonCount += 1
-                    View.VISIBLE
-                } else View.GONE
-            }
+
             val speakLastUsed = preferences.getLong("speak-last-used", 0)
             val searchLastUsed = preferences.getLong("search-last-used", 0)
 
@@ -1103,8 +1093,6 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
                 visibleButtonCount += 1
                 View.VISIBLE
             } else View.GONE
-
-            addForceSync()
 
             if(!showSpeak && transportBarVisible && speakControl.isStopped) {
                 transportBarVisible = false
