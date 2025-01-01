@@ -149,7 +149,7 @@ const {strings, appSettings} = useCommon();
 
 function buttonColor(color: ColorParam, highlighted = false) {
     if (appSettings.monochromeMode) {
-        return "color: var(--button-grey)";
+        return "";
     }
     if (props.inBookmarkModal) {
         return ""

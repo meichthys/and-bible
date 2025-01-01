@@ -93,10 +93,7 @@
 
 $button-border-radius: 8px;
 $button-padding: 6px;
-:root {
-  --button-grey: #8e8e8e;
-}
-$button-grey: var(--button-grey);
+$button-grey: var(--modal-grey);
 
 .button {
   font-size: 90%;
@@ -113,6 +110,9 @@ $button-grey: var(--button-grey);
     .night & {
       background-color: #616161;
       color: #bdbdbd;
+    }
+    .night.monochrome & {
+      color: white;
     }
   }
   &.warning {
@@ -163,7 +163,14 @@ $button-grey: var(--button-grey);
   justify-content: flex-start;
 }
 
-$modal-header-background-color: rgba(172,172,172,1);
+:root {
+  --modal-grey:  rgb(172,172,172);
+  .monochrome {
+    --modal-grey: rgb(76, 76, 76);
+  }
+}
+
+$modal-header-background-color: var(--modal-grey);
 $night-modal-header-background-color: rgba(69,69,69,1);
 
 $modal-content-background-color: #fefefe;
