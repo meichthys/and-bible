@@ -58,10 +58,10 @@ export function useVerseNotifier(
 
         // Find element, starting from right
         let element: Nullable<HTMLElement>;
-        let directionChanged = true;
-        while (directionChanged) {
-            directionChanged = false;
-            while (y < window.innerHeight) {
+        while (y < window.innerHeight) {
+            let directionChanged = true;
+            while (directionChanged) {
+                directionChanged = false;
                 for (const x of iterate(lastDirection)) {
                     element = document.elementFromPoint(x, y) as Nullable<HTMLElement>
                     if (element) {
