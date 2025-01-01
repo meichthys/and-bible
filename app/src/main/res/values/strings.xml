@@ -1236,5 +1236,7 @@
         Don\'t show this message again
     </string>
     <string name="pref_font_size_multiplier_title">Font size multiplier</string>
-    <string name="pref_font_size_multiplier_summary">Multiply font sizes by this number. Current multiplication: %sx</string>
+    <string name="pref_font_size_multiplier_summary_1">Multiply text font sizes by this number.</string>
+    <string name="pref_font_size_multiplier_summary_2">Useful if you have a synchronized device that is used with larger font.</string>
+    <string name="current_value">Current value: %s</string>
 </resources>
