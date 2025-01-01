@@ -765,7 +765,7 @@ Quando questa funzione è attiva, puoi mostrare diverse finestre fisse nella vis
   <string name="share_verse_ok">Condividi / Copia</string>
   <string name="web_search">Ricerca web</string>
   <string name="verse_action_copy">Copia</string>
-  <string name="generic_share">Condivida</string>
+  <string name="generic_share">Condividi</string>
   <string name="share_verse_menu_title">Condividi / copia...</string>
   <string name="show_versenumbers">Mostra i numeri dei versetti</string>
   <string name="show_full_verses">Mostra i versetti completi</string>
