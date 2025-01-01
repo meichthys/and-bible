@@ -226,17 +226,16 @@ class SettingsFragment : PreferenceFragmentCompat() {
         dictCategory.isVisible = showGreek || showHebrew || showGreekMorph
         val fontSizeMultiplier = preferenceScreen.findPreference<SeekBarPreference>("font_size_multiplier") as SeekBarPreference
 
-        fun getFontSizeMultiplierSummary() =
+        fun getFontSizeMultiplierSummary(value: Int) =
             getString(R.string.pref_font_size_multiplier_summary_1) + " " +
             getString(R.string.pref_font_size_multiplier_summary_2) + " " +
             getString(R.string.current_value,
-                String.format(Locale.getDefault(), "%1.1fx",
-                    CommonUtils.settings.fontSizeMultiplierFloat)
+                String.format(Locale.getDefault(), "%1.1fx", value / 100F)
             )
 
-        fontSizeMultiplier.summary = getFontSizeMultiplierSummary()
+        fontSizeMultiplier.summary = getFontSizeMultiplierSummary(CommonUtils.settings.fontSizeMultiplier)
         fontSizeMultiplier.setOnPreferenceChangeListener { pref, newValue ->
-            fontSizeMultiplier.summary = getFontSizeMultiplierSummary()
+            fontSizeMultiplier.summary = getFontSizeMultiplierSummary(newValue as Int)
             true
         }
 
