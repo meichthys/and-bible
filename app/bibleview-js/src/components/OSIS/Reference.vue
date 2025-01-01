@@ -16,7 +16,7 @@
   -->
 
 <template>
-  <a class="reference" :class="{clicked, isHighlighted}" @click.prevent="openLink($event, link)" :href="link" ref="content"><span ref="slot"><slot/></span><template v-if="slotEmpty">{{osisRef}}&nbsp;</template></a>
+  <a class="reference" :class="{clicked, highlight: isHighlighted}" @click.prevent="openLink($event, link)" :href="link" ref="content"><span ref="slot"><slot/></span><template v-if="slotEmpty">{{osisRef}}&nbsp;</template></a>
 </template>
 
 <script setup lang="ts">
@@ -93,14 +93,25 @@ function openLink(event: MouseEvent, url: string) {
 <style lang="scss">
 @import "~@/common.scss";
 
+.highlight {
+  @extend .isHighlighted;
+  .monochrome & {
+    background-color: transparent;
+  }
+}
+
 .reference {
   @extend .highlight-transition;
   border-radius: 5pt;
 }
 
 a {
+  .noAnimation & {
+    -webkit-tap-highlight-color: transparent;
+  }
   &.clicked {
     color: #8b00ee;
+    font-weight: normal;
   }
 
   .night & {
