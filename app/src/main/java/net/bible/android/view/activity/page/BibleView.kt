@@ -1003,7 +1003,7 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
             if (links.size > 1) {
                 linkControl.openMulti(links)
             } else {
-                linkControl.loadApplicationUrl(links.first())
+                linkControl.loadApplicationUrl(links.first(), null)
             }
             true
         }
@@ -1044,15 +1044,15 @@ class BibleView(val mainBibleActivity: MainBibleActivity,
             val ordinal = uri.getQueryParameter("ordinal")
             val v11n = uri.getQueryParameter("v11n")
             val forceDoc = uri.getBooleanQueryParameter("force-doc", false)
+            val book = Books.installed().getBook(doc)
             if(ordinal != null) {
-                val book = Books.installed().getBook(doc)
                 val bookKey = book!!.getKey(osisRef).let {if(it is RangedPassage) it.first() else it }
                 linkControl.showLink(book, BookAndKey(bookKey, book, OrdinalRange(ordinal.toInt())))
             } else if (osisRef != null) {
-                linkControl.loadApplicationUrl(BibleLink("osis", osisRef.trim(), v11n, forceDoc = forceDoc))
+                linkControl.loadApplicationUrl(BibleLink("osis", osisRef.trim(), v11n, forceDoc = forceDoc), book)
             } else {
                 val contentRef = uri.getQueryParameter("content")!!
-                linkControl.loadApplicationUrl(BibleLink("content", contentRef.trim(), v11n, forceDoc = forceDoc))
+                linkControl.loadApplicationUrl(BibleLink("content", contentRef.trim(), v11n, forceDoc = forceDoc), book)
             }
             true
         }
