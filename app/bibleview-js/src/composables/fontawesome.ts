@@ -49,6 +49,10 @@ import {
     faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
+import {
+    faClock
+} from "@fortawesome/free-regular-svg-icons";
+
 export function useFontAwesome() {
     const customWholeVerseFalse: IconDefinition = {
         prefix: 'fas',
@@ -112,5 +116,6 @@ export function useFontAwesome() {
         faHandPointer,
         faSave,
         faCheck,
+        faClock,
     );
 }

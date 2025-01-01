@@ -40,7 +40,12 @@
       <div class="bottom-right-corner"/>
     </div>
     <div id="top"/>
-    <div class="loading" v-if="isLoading"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+    <div class="loading" v-if="isLoading">
+      <div v-if="appSettings.disableAnimations" class="loading-icon">
+        <FontAwesomeIcon size="2x" icon="fa-regular fa-clock"/>
+      </div>
+      <div v-else class="lds-ring"><div/><div/><div/><div/></div>
+    </div>
     <div id="content" ref="topElement" :style="contentStyle">
       <div style="position: absolute; top: -5000px;" v-if="documents.length === 0">Invisible element to make fonts load properly</div>
       <DocumentBroker v-for="document in documents" :key="document.id" :document="document"/>
@@ -98,6 +103,7 @@ import {useCustomFeatures} from "@/composables/features";
 import {useSharing} from "@/composables/sharing";
 import {AnyDocument, BibleViewDocumentType} from "@/types/documents";
 import AmbiguousSelection from "@/components/modals/AmbiguousSelection.vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
 console.log("BibleView setup");
 useAddonFonts();
@@ -356,6 +362,14 @@ $ring-thickness: calc(#{$ring-size} / 12);
   top: calc(50% - #{$ring-size} / 2);
 }
 
+.loading-icon {
+  border-radius: 50%;
+  background: white;
+  .night & {
+    background: black;
+  }
+}
+
 $ring-color: $button-grey;
 
 .lds-ring {
@@ -374,9 +388,6 @@ $ring-color: $button-grey;
     border: $ring-thickness solid $ring-color;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    .noAnimation & {
-      animation: none; // TODO: better loading indicator for noAnimation
-    }
     border-color: $ring-color transparent transparent transparent;
 
     &:nth-child(1) {
