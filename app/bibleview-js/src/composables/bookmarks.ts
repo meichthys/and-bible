@@ -637,7 +637,7 @@ export function useBookmarks(
         if (config.showBookmarks) {
             for (const b of bookmarks.filter(b => arrayEq(combinedRange(b)[0], [startOrdinal, startOff]))) {
                 if (hasSpeakLabel(b)) {
-                    const color = adjustedColor("red").string()
+                    const color = adjustedColor(appSettings.monochromeMode ? "black" : "red").string()
                     const iconElement = getIconElement(speakIcon, color);
 
                     iconElement.addEventListener("click", event => addEventFunction(event,
@@ -665,7 +665,7 @@ export function useBookmarks(
             const bookmark = bookmarkList[0];
             if (bookmark) {
                 const bookmarkLabel = getBookmarkStyleLabel(bookmark);
-                const color = adjustedColor(bookmarkLabel.color).string();
+                const color = adjustedColor(appSettings.monochromeMode ? "black" : bookmarkLabel.color).string();
                 const iconElement = getIconElement(hasNote ? editIcon : bookmarkIcon, color);
                 iconElement.addEventListener("click", event => {
                     for (const b of bookmarkList) {
@@ -714,7 +714,7 @@ export function useBookmarks(
             const lastElement = document.querySelector(`#doc-${documentId} #o-${lastOrdinal}`) as HTMLElement;
             const b = bookmarkList[0];
             const bookmarkLabel = getBookmarkStyleLabel(b);
-            const color = adjustedColor(bookmarkLabel.color).string();
+            const color = adjustedColor(appSettings.monochromeMode ? "black" : bookmarkLabel.color).string();
             const iconElement = getIconElement(b.hasNote ? editIcon : bookmarkIcon, color);
             iconElement.addEventListener("click", event => {
                 for (const b of bookmarkList) {

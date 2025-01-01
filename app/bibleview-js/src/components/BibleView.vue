@@ -296,9 +296,15 @@ const topStyle = computed(() => {
     const backgroundColor = Color(appSettings.nightMode ? nightBackgroundColor : dayBackgroundColor);
     const noiseOpacity = appSettings.nightMode ? config.colors.nightNoise : config.colors.dayNoise;
     const textColor = Color(appSettings.nightMode ? nightTextColor : dayTextColor);
-    const verseNumberColor = appSettings.nightMode ?
-        textColor.fade(0.2).hsl().string() :
-        textColor.fade(0.5).hsl().string();
+    let verseNumberColor: string;
+    if (appSettings.monochromeMode) {
+        verseNumberColor = textColor.hsl().string();
+    } else {
+        verseNumberColor = appSettings.nightMode ?
+            textColor.fade(0.2).hsl().string() :
+            textColor.fade(0.5).hsl().string();
+    }
+
     return `
           --bottom-offset: ${appSettings.bottomOffset}px;
           --top-offset: ${appSettings.topOffset}px;
