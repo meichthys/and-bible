@@ -26,6 +26,8 @@ import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Color
 import android.media.AudioManager
+import android.net.ConnectivityManager
+import android.net.Network
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -141,7 +143,6 @@ import org.crosswire.jsword.book.Book
 import org.crosswire.jsword.book.BookCategory
 import org.crosswire.jsword.book.Books
 import org.crosswire.jsword.book.sword.SwordBook
-import org.crosswire.jsword.passage.Key
 import org.crosswire.jsword.passage.NoSuchVerseException
 import org.crosswire.jsword.passage.PassageKeyFactory
 import org.crosswire.jsword.passage.Verse
@@ -312,10 +313,20 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
             }
             initialized = true
         }
-        syncScope.launch { startSync() }
         if(intent.hasExtra("openLink")) {
             val uri = Uri.parse(intent.getStringExtra("openLink"))
             openLink(uri)
+        }
+        val connManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            connManager.registerDefaultNetworkCallback(networkCallback)
+        }
+    }
+
+    var networkCallback = object: ConnectivityManager.NetworkCallback() {
+        override fun onAvailable(network: Network) {
+            super.onAvailable(network)
+            syncScope.launch { startSync() }
         }
     }
 
@@ -1430,10 +1441,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
             syncScope.launch { synchronize(true) }
         } else {
             updateActions()
-            syncScope.launch {
-                delay(5000) // Wait a little bit as wifi might be auto-turned on after returning from sleep
-                startSync()
-            }
+            syncScope.launch { startSync() }
         }
     }
 
