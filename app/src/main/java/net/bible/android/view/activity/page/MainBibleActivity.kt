@@ -1431,7 +1431,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
         } else {
             updateActions()
             syncScope.launch {
-                delay(2000) // Wait a little bit as wifi might be auto-turned on after returning from sleep
+                delay(5000) // Wait a little bit as wifi might be auto-turned on after returning from sleep
                 startSync()
             }
         }
