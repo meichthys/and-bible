@@ -1,4 +1,4 @@
-- Settings & improvements for e-ink devices (#3354):
+- Settings & improvements for e-ink devices like Onyx Boox (#3354):
    1) Setting to turn off animations
    1) Setting to set app to monochrome mode
 
