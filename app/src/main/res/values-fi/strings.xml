@@ -713,6 +713,7 @@ Voit laittaa ikkunoiden kiinnityksen päälle ylävalikosta (valikko joka merkit
   <string name="format_mysword">MySword-dokumentti (*.mybible)</string>
   <string name="format_mybible">MyBible-dokumentti (*.SQLite3)</string>
   <string name="format_epub">EPUB-dokumentit (*.epub)</string>
+  <string name="format_studypads">Opintoalustat AndBible tietokannasta (*.abdb)</string>
   <string name="redownload_message">Lista aiemmin asennetuista dokumenteista löytyi. Napsauta alta asentaaksesi ne uudelleen helposti. </string>
   <!--Uncategorized-->
   <string name="close">Sulje</string>
@@ -755,6 +756,7 @@ Voit laittaa ikkunoiden kiinnityksen päälle ylävalikosta (valikko joka merkit
   <string name="tell_friend_message3">Asenna se Play-kaupasta: %s</string>
   <string name="tell_friend_message4">Lue lisää &amp; lisää asennusvaihtoehtoja: %s</string>
   <string name="share_verse_ok">Jaa / Kopioi</string>
+  <string name="web_search">Haku internetistä</string>
   <string name="verse_action_copy">Kopioi</string>
   <string name="generic_share">Jaa</string>
   <string name="share_verse_menu_title">Jaa / kopioi…</string>
@@ -982,4 +984,8 @@ Voit laittaa ikkunoiden kiinnityksen päälle ylävalikosta (valikko joka merkit
   <string name="new_version_warning3">Siihen ei tule enää bugikorjauksia tai päivityksiä.</string>
   <string name="new_version_warning4">Jos et halua päivittää, kytke pois automaattiset päivitykset sovelluskaupastasi (Google Play / F-Droid tms.).</string>
   <string name="dont_show">Älä näytä tää viestiä uudelleen</string>
+  <string name="pref_font_size_multiplier_title">Fontin koon kerroin</string>
+  <string name="pref_font_size_multiplier_summary_1">Muuta fontin kokoa tällä kertoimella.</string>
+  <string name="pref_font_size_multiplier_summary_2">Kätevä jos käytössäsi on synkronoitu laite jolla haluat käyttää suurempaa fonttia.</string>
+  <string name="current_value">Nykyinen arvo: %s</string>
 </resources>
