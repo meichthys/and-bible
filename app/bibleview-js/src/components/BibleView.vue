@@ -340,7 +340,7 @@ function scrollUpDown(up = false) {
         window.innerHeight
         - calculatedConfig.value.topOffset
         - appSettings.bottomOffset;
-    if (!config.topMargin) {
+    if (documentType.value !== "bible" || (documentType.value === "bible" && !config.topMargin)) {
         amount -= 1.5*lineHeight.value; // 1.5 times because last line might be otherwise displayed partially
     }
     doScrolling(window.scrollY + (up ? -amount : amount), 200)
