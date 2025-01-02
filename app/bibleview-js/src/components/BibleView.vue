@@ -336,11 +336,13 @@ setupEventBusListener("adjust_loading_count", (a: number) => {
 const isLoading = computed(() => documents.length === 0 || loadingCount.value > 0);
 
 function scrollUpDown(up = false) {
-    const amount =
+    let amount =
         window.innerHeight
         - calculatedConfig.value.topOffset
-        - appSettings.bottomOffset
-        - 1.5*lineHeight.value; // 1.5 times because last line might be otherwise displayed partially
+        - appSettings.bottomOffset;
+    if (!config.topMargin) {
+        amount -= 1.5*lineHeight.value; // 1.5 times because last line might be otherwise displayed partially
+    }
     doScrolling(window.scrollY + (up ? -amount : amount), 200)
 }
 
