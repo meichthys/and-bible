@@ -675,7 +675,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
 
             strongsButton.setOnClickListener {
                 val prefOptions = dummyStrongsPrefOption
-                prefOptions.value = (prefOptions.value as Int + 1) % 4
+                prefOptions.value = (prefOptions.value as Int + 1) % 3
                 prefOptions.handle()
                 updateStrongsButton()
             }
