@@ -325,7 +325,7 @@ object CommonUtils : CommonUtilsBase() {
             try {
                 val manager = application.packageManager
                 val info = manager.getPackageInfo(application.packageName, 0)
-                versionName = info.versionName
+                versionName = info.versionName ?: throw NameNotFoundException()
             } catch (e: NameNotFoundException) {
                 Log.e(TAG, "Error getting package name.", e)
                 versionName = "Error"
