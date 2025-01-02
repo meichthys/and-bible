@@ -40,11 +40,11 @@ export function useVerseNotifier(
 
     function* iterate(direction = "ltr") {
         if (direction === "ltr") {
-            for (let x = window.innerWidth - Math.max(step, config.marginSize.marginRight); x > 0; x -= step) {
+            for (let x = window.innerWidth - Math.max(step, calculatedConfig.value.marginRight); x > 0; x -= step) {
                 yield x;
             }
         } else {
-            for (let x = Math.max(step, config.marginSize.marginLeft); x < window.innerWidth; x += step) {
+            for (let x = Math.max(step, calculatedConfig.value.marginLeft); x < window.innerWidth; x += step) {
                 yield x;
             }
         }
@@ -80,7 +80,7 @@ export function useVerseNotifier(
                         }
                     }
                 }
-                y += lineHeight.value;
+                y += lineHeight.value * 0.5;
             }
         }
     }, 50);

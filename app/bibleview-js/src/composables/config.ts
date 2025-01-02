@@ -117,6 +117,8 @@ export type AppSettings = {
 export type CalculatedConfig = Ref<{
     topOffset: number
     topMargin: number
+    marginLeft: number
+    marginRight: number
 }>
 
 export function useConfig(documentType: Ref<BibleViewDocumentType>) {
