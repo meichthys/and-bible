@@ -18,6 +18,8 @@
 package net.bible.service.common
 
 interface OnyxSupportInterface {
+    val isOnyxDevice: Boolean
+    val isMonochrome: Boolean
     fun setupOnyxFast()
     fun setupOnyxNormal()
 }
