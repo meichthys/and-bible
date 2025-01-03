@@ -327,11 +327,15 @@ abstract class ActivityBase : AppCompatActivity(), AndBibleActivity {
     fun setupOnyxFast() {
         val onyxDev = Device.currentDevice
         onyxDev.appScopeRefreshMode = UpdateOption.FAST
+        onyxDev.applyMonoLevel(30)
+        onyxDev.applyColorFilter(10)
     }
 
     fun setupOnyxNormal() {
         val onyxDev = Device.currentDevice
         onyxDev.appScopeRefreshMode = UpdateOption.NORMAL
+        onyxDev.applyMonoLevel(0)
+        onyxDev.applyColorFilter(0)
     }
 
     override fun onNewIntent(intent: Intent?) {
