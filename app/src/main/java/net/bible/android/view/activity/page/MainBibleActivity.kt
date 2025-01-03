@@ -62,8 +62,6 @@ import androidx.core.view.MenuCompat
 import androidx.core.view.children
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
-import com.onyx.android.sdk.api.device.epd.UpdateOption
-import com.onyx.android.sdk.device.Device
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -143,7 +141,6 @@ import org.crosswire.jsword.book.Book
 import org.crosswire.jsword.book.BookCategory
 import org.crosswire.jsword.book.Books
 import org.crosswire.jsword.book.sword.SwordBook
-import org.crosswire.jsword.passage.Key
 import org.crosswire.jsword.passage.NoSuchVerseException
 import org.crosswire.jsword.passage.PassageKeyFactory
 import org.crosswire.jsword.passage.Verse
@@ -1925,7 +1922,7 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
 
     override fun onStart() {
         super.onStart()
-        setupOnyxNormal()
+        CommonUtils.onyxSupport?.setupOnyxNormal()
     }
 
     companion object {

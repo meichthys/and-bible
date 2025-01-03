@@ -35,8 +35,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
-import com.onyx.android.sdk.api.device.epd.UpdateOption
-import com.onyx.android.sdk.device.Device
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -321,21 +319,7 @@ abstract class ActivityBase : AppCompatActivity(), AndBibleActivity {
     override fun onStart() {
         super.onStart()
         Log.i(TAG, "onStart")
-        setupOnyxFast()
-    }
-
-    fun setupOnyxFast() {
-        val onyxDev = Device.currentDevice
-        onyxDev.appScopeRefreshMode = UpdateOption.FAST
-        onyxDev.applyMonoLevel(30)
-        onyxDev.applyColorFilter(10)
-    }
-
-    fun setupOnyxNormal() {
-        val onyxDev = Device.currentDevice
-        onyxDev.appScopeRefreshMode = UpdateOption.NORMAL
-        onyxDev.applyMonoLevel(0)
-        onyxDev.applyColorFilter(0)
+        CommonUtils.onyxSupport?.setupOnyxFast()
     }
 
     override fun onNewIntent(intent: Intent?) {

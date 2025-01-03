@@ -116,7 +116,6 @@ import net.bible.android.view.activity.base.ActivityBase
 import net.bible.android.view.activity.base.CurrentActivityHolder
 import net.bible.android.view.activity.base.Dialogs
 import net.bible.android.view.activity.download.DownloadActivity
-import net.bible.android.view.activity.page.BibleView
 import net.bible.android.view.activity.page.Selection
 import net.bible.android.view.activity.page.buyDevelopmentLink
 import net.bible.service.cloudsync.CloudSync
@@ -159,7 +158,6 @@ import org.crosswire.jsword.versification.system.Versifications
 import org.jdom2.input.SAXBuilder
 import org.jdom2.xpath.XPathFactory
 import org.spongycastle.util.io.pem.PemReader
-import java.io.BufferedInputStream
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -1090,6 +1088,7 @@ object CommonUtils : CommonUtilsBase() {
 
     var initialized = false
     private var booksInitialized = false
+    var onyxSupport: OnyxSupportInterface? = null
 
     fun initializeApp() {
         if(!initialized) {
@@ -1107,6 +1106,13 @@ object CommonUtils : CommonUtilsBase() {
             if(!BuildVariant.Appearance.isDiscrete) {
                 ttsWidgetManager = SpeakWidgetManager()
             }
+
+            if (FLAVOR_distchannel != "fdroid") {
+                val adapter = Class.forName("net.bible.service.cloudsync.onyx.OnyxSupport")
+                val constructor = adapter.getDeclaredConstructor()
+                onyxSupport = constructor.newInstance() as OnyxSupportInterface
+            }
+
             addManuallyInstalledMyBibleBooks()
             addManuallyInstalledMySwordBooks()
             addManuallyInstalledEpubBooks()
