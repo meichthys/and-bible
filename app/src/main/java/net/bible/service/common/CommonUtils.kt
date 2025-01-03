@@ -116,6 +116,7 @@ import net.bible.android.view.activity.base.ActivityBase
 import net.bible.android.view.activity.base.CurrentActivityHolder
 import net.bible.android.view.activity.base.Dialogs
 import net.bible.android.view.activity.download.DownloadActivity
+import net.bible.android.view.activity.page.BibleView
 import net.bible.android.view.activity.page.Selection
 import net.bible.android.view.activity.page.buyDevelopmentLink
 import net.bible.service.cloudsync.CloudSync
@@ -260,6 +261,8 @@ open class CommonUtilsBase {
     @Inject lateinit var speakControl: SpeakControl
     @Inject lateinit var bibleTraverser: BibleTraverser
 }
+
+enum class BibleViewSwipeMode {CHAPTER, PAGE, NONE}
 
 class Ref<T>(var value: T? = null)
 
@@ -433,6 +436,7 @@ object CommonUtils : CommonUtilsBase() {
         val disableAnimations: Boolean get() = getBoolean("disable_animations", false)
         val fontSizeMultiplier: Int get() = getInt("font_size_multiplier", 100)
         val fontSizeMultiplierFloat: Float get() = getInt("font_size_multiplier", 100) / 100F
+        val bibleViewSwipeMode: BibleViewSwipeMode get() = BibleViewSwipeMode.valueOf(getString("bible_view_swipe_mode", "CHAPTER")!!)
     }
 
     private var _settings: AndBibleSettings? = null

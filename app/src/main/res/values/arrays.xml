@@ -53,8 +53,20 @@
 	</string-array>
 	<!-- Bible/commentary toolbar button press actions -->
 
+    <string-array name="prefs_bible_view_swipe_mode_values">
+        <item>CHAPTER</item>
+        <item>PAGE</item>
+        <item>NONE</item>
+    </string-array>
+
+    <string-array name="prefs_bible_view_swipe_mode_descriptions">
+        <item>@string/prefs_swipe_mode_chapter</item>
+        <item>@string/prefs_swipe_mode_page</item>
+        <item>@string/prefs_swipe_mode_none</item>
+    </string-array>
+
 	<!-- Screen colors: automatic night mode, day, night -->
-	<string-array name="prefs_night_mode_descriptions">
+    <string-array name="prefs_night_mode_descriptions">
 		<item>@string/prefs_night_mode_manual</item>
 		<item>@string/prefs_night_mode_automatic</item>
 	</string-array>
