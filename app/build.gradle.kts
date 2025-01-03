@@ -363,7 +363,7 @@ dependencies {
     implementation("androidx.webkit:webkit:1.12.1")
     implementation("net.objecthunter:exp4j:0.4.8")
     implementation("com.github.requery:sqlite-android:$sqliteAndroidVersion")
-
+    implementation("com.onyx.android.sdk:onyxsdk-device:1.2.32")
     //// Google Drive API
     for(variantImplementation in listOf("googleplay", "github", "amazon", "samsung", "huawei").map { "${it}Implementation" }) {
         variantImplementation("com.google.android.gms:play-services-auth:20.7.0")

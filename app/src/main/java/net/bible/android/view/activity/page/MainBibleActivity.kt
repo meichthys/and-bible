@@ -62,6 +62,8 @@ import androidx.core.view.MenuCompat
 import androidx.core.view.children
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
+import com.onyx.android.sdk.api.device.epd.UpdateOption
+import com.onyx.android.sdk.device.Device
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -1919,6 +1921,11 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
 
     fun activate(v: View) {
         CurrentActivityHolder.activate(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setupOnyxNormal()
     }
 
     companion object {
