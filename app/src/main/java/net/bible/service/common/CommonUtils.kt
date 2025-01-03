@@ -1106,12 +1106,7 @@ object CommonUtils : CommonUtilsBase() {
             if(!BuildVariant.Appearance.isDiscrete) {
                 ttsWidgetManager = SpeakWidgetManager()
             }
-
-            if (FLAVOR_distchannel != "fdroid") {
-                val adapter = Class.forName("net.bible.service.cloudsync.onyx.OnyxSupport")
-                val constructor = adapter.getDeclaredConstructor()
-                onyxSupport = constructor.newInstance() as OnyxSupportInterface
-            }
+            initializeOnyx()
 
             addManuallyInstalledMyBibleBooks()
             addManuallyInstalledMySwordBooks()
@@ -1134,6 +1129,14 @@ object CommonUtils : CommonUtilsBase() {
                 }
             }
             booksInitialized = true
+        }
+    }
+
+    private fun initializeOnyx() {
+        if (FLAVOR_distchannel != "fdroid") {
+            val adapter = Class.forName("net.bible.service.onyx.OnyxSupport")
+            val constructor = adapter.getDeclaredConstructor()
+            onyxSupport = constructor.newInstance() as OnyxSupportInterface
         }
     }
 
@@ -1160,6 +1163,7 @@ object CommonUtils : CommonUtilsBase() {
                 addManuallyInstalledMySwordBooks()
                 addManuallyInstalledEpubBooks()
             }
+            initializeOnyx()
 
             // IN practice we don't need to restore this data, because it is stored by JSword in book
             // metadata (persisted by JSWORD to files) too.

@@ -15,7 +15,7 @@
  * If not, see http://www.gnu.org/licenses/.
  */
 
-package net.bible.service.cloudsync.onyx
+package net.bible.service.onyx
 
 import com.onyx.android.sdk.api.device.epd.UpdateOption
 import com.onyx.android.sdk.device.Device
@@ -25,14 +25,10 @@ class OnyxSupport: OnyxSupportInterface {
     override fun setupOnyxFast() {
         val onyxDev = Device.currentDevice
         onyxDev.appScopeRefreshMode = UpdateOption.FAST
-        onyxDev.applyMonoLevel(30)
-        onyxDev.applyColorFilter(10)
     }
 
     override fun setupOnyxNormal() {
         val onyxDev = Device.currentDevice
         onyxDev.appScopeRefreshMode = UpdateOption.NORMAL
-        onyxDev.applyMonoLevel(0)
-        onyxDev.applyColorFilter(0)
     }
 }
