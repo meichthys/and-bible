@@ -188,6 +188,8 @@
     <string name="prefs_margin_size_summary">Adjust left and right margin of the text view. You can also
         adjust maximum width of the text.
     </string>
+    <string name="prefs_margin_size_summary_2">Tip: tap margin area to jump one page up / down.</string>
+
     <string name="prefs_text_colors_summary">Adjust text and background colors and noise effect</string>
     <string name="text_display_settings_activity_title">Text display settings</string>
     <string name="workspace_text_display_settings_title">Text options - %s</string>
