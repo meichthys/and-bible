@@ -158,7 +158,6 @@ class SettingsActivity: ActivityBase() {
                 )
                 for(key in keys) {
                     editor.removeString(key)
-                    editor.removeString(key)
                     editor.removeBoolean(key)
                     editor.removeLong(key)
                     editor.removeDouble(key)
