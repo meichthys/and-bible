@@ -23,7 +23,7 @@ import com.onyx.android.sdk.device.Device
 import net.bible.service.common.OnyxSupportInterface
 
 class OnyxSupport: OnyxSupportInterface {
-    override val isOnyxDevice: Boolean get() = Build.BRAND == "Onyx"
+    override val isOnyxDevice: Boolean get() = Build.BRAND.lowercase() == "onyx"
     override val isMonochrome: Boolean get() = isOnyxDevice // TODO: fix this as soon as we learn to use SDK
 
     override fun setupOnyxFast() {
