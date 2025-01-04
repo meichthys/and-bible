@@ -153,7 +153,8 @@ class SettingsActivity: ActivityBase() {
                     "gen_bookmark_modal_buttons",
                     "monochrome_mode",
                     "disable_animations",
-                    "font_size_multiplier"
+                    "font_size_multiplier",
+                    "bible_view_swipe_mode"
                 )
                 for(key in keys) {
                     editor.removeString(key)
