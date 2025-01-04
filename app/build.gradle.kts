@@ -285,7 +285,7 @@ android {
         }
     }
 
-    packagingOptions {
+    packaging {
         resources.excludes.add("META-INF/LICENSE.txt")
         resources.excludes.add("META-INF/NOTICE.txt")
         resources.excludes.add("META-INF/DEPENDENCIES")
@@ -366,7 +366,7 @@ dependencies {
     implementation("com.github.requery:sqlite-android:$sqliteAndroidVersion")
     for(variantImplementation in listOf("googleplay", "github", "amazon", "samsung", "huawei").map { "${it}Implementation" }) {
         // Onyx SDK (e-ink devices)
-        variantImplementation("com.onyx.android.sdk:onyxsdk-device:1.2.32")
+        variantImplementation("com.onyx.android.sdk:onyxsdk-device:1.2.32") // NOTE: remember to check its AndroidManifest.xml and remove unnecessary permissions in our AndroidManifest.xml
         // Google Drive API
         variantImplementation("com.google.android.gms:play-services-auth:20.7.0")
         variantImplementation("com.google.apis:google-api-services-drive:v3-rev20230212-2.0.0") {
