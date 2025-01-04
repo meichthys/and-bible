@@ -17,21 +17,23 @@
 
 package net.bible.service.onyx
 
+import android.os.Build
 import com.onyx.android.sdk.api.device.epd.UpdateOption
-import com.onyx.android.sdk.device.BaseDevice
 import com.onyx.android.sdk.device.Device
 import net.bible.service.common.OnyxSupportInterface
 
 class OnyxSupport: OnyxSupportInterface {
-    override val isOnyxDevice: Boolean get() = Device.currentDevice()::class != BaseDevice::class
+    override val isOnyxDevice: Boolean get() = Build.BRAND == "Onyx"
     override val isMonochrome: Boolean get() = isOnyxDevice // TODO: fix this as soon as we learn to use SDK
 
     override fun setupOnyxFast() {
+        if (!isOnyxDevice) return
         val onyxDev = Device.currentDevice()
         onyxDev.appScopeRefreshMode = UpdateOption.FAST
     }
 
     override fun setupOnyxNormal() {
+        if (!isOnyxDevice) return
         val onyxDev = Device.currentDevice()
         onyxDev.appScopeRefreshMode = UpdateOption.NORMAL
     }
