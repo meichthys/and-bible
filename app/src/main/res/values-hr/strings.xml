@@ -1059,4 +1059,5 @@ Baza podataka sadrži %s. Kako želite postupiti?</string>
   <string name="dont_show">
 Ne prikazuj ovu poruku ponovno.
       </string>
+  <string name="prefs_swipe_mode_chapter">Poglavlje</string>
 </resources>

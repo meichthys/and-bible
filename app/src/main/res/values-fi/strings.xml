@@ -140,6 +140,7 @@
   <string name="prefs_display_customization_cat">Ulkonäkö</string>
   <string name="prefs_behavior_customization_cat">Sovelluksen käyttäytyminen</string>
   <string name="prefs_margin_size_summary">Säädä tekstinäkymän vasenta ja oikeaa marginaalia. Voit mysö asettaa tekstille maksimileveyden.</string>
+  <string name="prefs_margin_size_summary_2">Vinkki: voit napsauttaa marginaalialuetta hypätäksesi sivun verran ylös/alas.</string>
   <string name="prefs_text_colors_summary">Säädä tekstin ja taustan värejä ja kohinatehostetta</string>
   <string name="text_display_settings_activity_title">Tekstin näytön valinnat</string>
   <string name="workspace_text_display_settings_title">Tekstin valinnat - %s</string>
@@ -988,4 +989,9 @@ Voit laittaa ikkunoiden kiinnityksen päälle ylävalikosta (valikko joka merkit
   <string name="pref_font_size_multiplier_summary_1">Muuta fontin kokoa tällä kertoimella.</string>
   <string name="pref_font_size_multiplier_summary_2">Kätevä jos käytössäsi on synkronoitu laite jolla haluat käyttää suurempaa fonttia.</string>
   <string name="current_value">Nykyinen arvo: %s</string>
+  <string name="prefs_bible_view_swipe_mode_title">Toiminne pyyhkäisyeleelle (oikea / vasen)</string>
+  <string name="prefs_bible_view_swipe_mode_summary">Pyyhkäisyelettä vasemmalle / oikealle voidaan käyttää seuraavaan sivuun / lukuun siirtymiseen.</string>
+  <string name="prefs_swipe_mode_chapter">Luku</string>
+  <string name="prefs_swipe_mode_page">Sivu</string>
+  <string name="prefs_swipe_mode_none">Luku</string>
 </resources>

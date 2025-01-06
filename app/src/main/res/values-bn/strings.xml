@@ -1050,4 +1050,5 @@ Google ড্রাইভ ব্যবহার করার সময়, %sশ
 আপনি আপগ্রেড করতে না চাইলে, অনুগ্রহ করে আপনার অ্যাপ স্টোরে (Google Play / F-Droid ইত্যাদি) \'স্বয়ংক্রিয় আপডেট\' অক্ষম করুন।</string>
   <string name="dont_show">
 এই বার্তাটি আবার দেখাবেন না</string>
+  <string name="prefs_swipe_mode_chapter">অধ্যায়</string>
 </resources>

@@ -799,4 +799,5 @@ Kas jätkame?</string>
   <string name="nameless">Pealkiri on määramata</string>
   <string name="buy_development">Aita rahastada arendust</string>
   <string name="buy_development2">Toeta projekti</string>
+  <string name="prefs_swipe_mode_chapter">Peatükk</string>
 </resources>

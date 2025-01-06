@@ -1038,4 +1038,5 @@ jelentse be az észlelt problémát</string>
   <string name="dont_show">
         Ne jelenítse meg ezt az üzenetet többet
     </string>
+  <string name="prefs_swipe_mode_chapter">Fejezet</string>
 </resources>

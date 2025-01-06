@@ -1019,4 +1019,5 @@ Es wird keine Fehlerbehebungen oder Updates mehr erhalten.</string>
 Wenn du nicht updaten möchtest, deaktiviere bitte die automatische Aktualisierung in deinem App-Store (Google Play, F-Droid etc.).</string>
   <string name="dont_show">
 Diese Nachricht nicht mehr anzeigen</string>
+  <string name="prefs_swipe_mode_chapter">Kapitel</string>
 </resources>
