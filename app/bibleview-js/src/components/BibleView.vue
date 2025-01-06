@@ -510,6 +510,7 @@ $borderDistance: 0;
   .noAnimation & {
     background-color: unset;
     border-bottom: 1px dashed rgba(0, 0, 0, 0.5);
+    font-smooth: never;
   }
   .night.noAnimation & {
     border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
