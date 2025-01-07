@@ -537,7 +537,9 @@ class SplitBibleArea(private val mainBibleActivity: MainBibleActivity): FrameLay
                         alpha(VISIBLE_ALPHA)
                         interpolator = DecelerateInterpolator()
                     }  else {
-                        alpha(hiddenAlpha)
+                        if (!CommonUtils.settings.disableAnimations) {
+                            alpha(hiddenAlpha)
+                        }
                         interpolator = AccelerateInterpolator()
                     }
                     withEndAction {
@@ -994,6 +996,7 @@ class SplitBibleArea(private val mainBibleActivity: MainBibleActivity): FrameLay
 
     companion object {
         private const val TAG = "SplitBibleArea"
+        private const val HIDDEN_ALPHA_DISABLE_ANIMATIONS = 0.5F
         private const val HIDDEN_ALPHA = 0.2F
         private const val HIDDEN_ALPHA_NIGHT = 0.5F
         private const val VISIBLE_ALPHA = 1.0F
