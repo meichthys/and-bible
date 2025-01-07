@@ -956,7 +956,8 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
             }
         }
         if(dummyStrongsPrefOption.value == 0) {
-            binding.strongsButton.alpha = 0.5F
+            val alpha = if(CommonUtils.settings.disableAnimations) 0.8F else 0.5F
+            binding.strongsButton.alpha = alpha
         } else
             binding.strongsButton.alpha = 1.0F
     }
