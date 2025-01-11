@@ -1408,13 +1408,18 @@ class MainBibleActivity : CustomTitlebarActivityBase() {
             windowRepository.saveIntoDb(false)
             if (force || (now - max(lastSynchronized, lastTouched) > syncInterval && CloudSync.hasChanges())) {
                 Log.i(TAG, "Performing periodic sync")
-                CommonUtils.settings.setLong("globalLastSynchronized", now)
                 if(!CloudSync.signedIn) {
                     CloudSync.signIn(this@MainBibleActivity)
                 }
                 CloudSync.start()
                 CloudSync.waitUntilFinished()
             }
+        }
+    }
+
+    fun onEvent(event: CloudSyncEvent) {
+        if (!event.running) {
+            CommonUtils.settings.setLong("globalLastSynchronized", now)
         }
     }
 
