@@ -210,6 +210,7 @@ open class Preference(val settings: SettingsBundle,
                 TextDisplaySettings.Types.LINE_SPACING -> R.string.line_spacing_title
                 TextDisplaySettings.Types.BOOKMARKS_SHOW -> R.string.prefs_show_bookmarks_title
                 TextDisplaySettings.Types.BOOKMARKS_HIDELABELS -> R.string.bookmark_settings_hide_labels_title
+                TextDisplaySettings.Types.PAGENUMBER -> R.string.page_number_title
             }
             return application.getString(id)
         }
