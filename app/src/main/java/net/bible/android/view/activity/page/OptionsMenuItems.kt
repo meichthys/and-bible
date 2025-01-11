@@ -237,6 +237,7 @@ open class Preference(val settings: SettingsBundle,
             TextDisplaySettings.Types.JUSTIFY -> R.drawable.ic_justify_text_24dp
             TextDisplaySettings.Types.HYPHENATION -> R.drawable.ic_hyphenation_24dp
             TextDisplaySettings.Types.MYNOTES -> R.drawable.ic_note_regular_24dp
+            TextDisplaySettings.Types.PAGENUMBER -> R.drawable.ic_chapter_verse_numbers_24dp
             else -> R.drawable.ic_baseline_star_24
         }
 }
