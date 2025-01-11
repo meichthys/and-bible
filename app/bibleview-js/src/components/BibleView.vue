@@ -339,17 +339,20 @@ setupEventBusListener("adjust_loading_count", (a: number) => {
 });
 
 const isLoading = computed(() => documents.length === 0 || loadingCount.value > 0);
-
-function scrollUpDown(up = false) {
+const scrollAmount = computed(() => {
     let amount = calculatedConfig.value.pageHeight;
     if (documentType.value !== "bible" || (documentType.value === "bible" && !config.topMargin)) {
         amount -= 1.5*lineHeight.value; // 1.5 times because last line might be otherwise displayed partially
     }
-    doScrolling(window.scrollY + (up ? -amount : amount), 0)
+    return amount;
+})
+
+function scrollUpDown(up = false) {
+    doScrolling(window.scrollY + (up ? -scrollAmount.value : scrollAmount.value), 0)
 }
 
 const pageNumber = computed(() => {
-    const num = (scrollY.value - scrollYAtStart.value) / calculatedConfig.value.pageHeight;
+    const num = (scrollY.value - scrollYAtStart.value) / scrollAmount.value;
     return num.toFixed(1);
 });
 
