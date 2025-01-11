@@ -22,6 +22,8 @@ import {AppSettings, CalculatedConfig, Config} from "@/composables/config";
 import {useOrdinalHighlight} from "@/composables/ordinal-highlight";
 import {Nullable} from "@/types/common";
 
+export type UseScroll = ReturnType<typeof useScroll>;
+
 export function useScroll(
     config: Config,
     appSettings: AppSettings,
