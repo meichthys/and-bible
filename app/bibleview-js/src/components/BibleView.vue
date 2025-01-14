@@ -62,6 +62,7 @@
     <div
         v-if="appSettings.isBottomWindow"
         @touchmove.stop.prevent
+        :style="{height: `${appSettings.bottomOffset}px`}"
         class="bottom-touch-block"
     />
     <div id="bottom"/>
@@ -635,9 +636,15 @@ a {
 .bottom-touch-block {
   position: fixed;
   bottom: 0;
-  height: 1cm;
   width: 100%;
-  background: transparent;
+  background: linear-gradient(to bottom, transparent 0%, var(--background-color) 15%, var(--background-color) 100%);
+
+  .noAnimation & {
+    background: var(--background-color);
+    border-color: var(--text-color);
+    border-top-style: dashed;
+    border-width: 1px;
+  }
   z-index: 10;
 }
 
