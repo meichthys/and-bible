@@ -54,7 +54,11 @@
       <div class="prev-page-button" @click.stop="scrollUpDown(true)" :style="{width: `${calculatedConfig.marginLeft}px`}"/>
       <div class="next-page-button" @click.stop="scrollUpDown()" :style="{width: `${calculatedConfig.marginRight}px`}" />
     </template>
-    <div class="pagenumber" :style="{bottom: `${appSettings.bottomOffset}px`}" v-if="config.showPageNumber">
+    <div class="pagenumber"
+         :style="{bottom: `${appSettings.bottomOffset}px`}"
+         v-if="config.showPageNumber"
+         @click="resetPageNumber()"
+    >
       <div class="pagenumber-text">
         {{ pageNumber }}
       </div>
@@ -356,6 +360,10 @@ const pageNumber = computed(() => {
     const num = (scrollY.value - scrollYAtStart.value) / scrollAmount.value;
     return num.toFixed(1);
 });
+
+function resetPageNumber() {
+    scrollYAtStart.value = scrollY.value
+}
 
 setupEventBusListener("scroll_down", () => scrollUpDown());
 setupEventBusListener("scroll_up", () => scrollUpDown(true));
