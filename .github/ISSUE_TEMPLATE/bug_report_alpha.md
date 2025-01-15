@@ -26,9 +26,9 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Smartphone (please complete the following information):**
- - Device: [e.g. Samsung Galaxy S6]
+ - Device: [e.g. Samsung Galaxy S24]
  - OS: [e.g. Android]
- - Version [e.g. 8.0]
+ - Version [e.g. 15.0]
 
 **Additional context**
 Add any other context about the problem here.
